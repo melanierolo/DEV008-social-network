@@ -1,0 +1,1 @@
+//Interacción con el DOM de registro

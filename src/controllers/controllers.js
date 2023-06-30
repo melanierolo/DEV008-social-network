@@ -1,0 +1,1 @@
+//Maneja la logica y funciones puras
