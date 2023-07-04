@@ -18,12 +18,15 @@ export const onNavigate = (pathname) => {
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
-  rootDiv.appendChild(routes[pathname]());
+  rootDiv.appendChild(routes[pathname](onNavigate));
 };
 
 const component = routes[window.location.pathname];
 window.onpopstate = () => {
-  rootDiv.appendChild(component());
+  while (rootDiv.firstChild) {
+    rootDiv.removeChild(rootDiv.firstChild);
+  }
+  rootDiv.appendChild(component(onNavigate));
 };
 
-rootDiv.appendChild(component());
+rootDiv.appendChild(component(onNavigate));
