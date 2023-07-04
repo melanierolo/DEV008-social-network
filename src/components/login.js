@@ -1,23 +1,21 @@
 // Funciones para la interacción con el DOM del login y la vista(create element o template string)
-import {onNavigate} from '../main.js';
-export const Login= () =>{
-    const logindiv= document.createElement('div');
-    const buttonRegister = document.createElement('button');
-    const buttonLogin = document.createElement('button');
 
-    buttonRegister.textContent='Registrate';
-    buttonLogin.textContent='Iniciar Sesión';
+export const Login = (onNavigate) => {
+  const logindiv = document.createElement("div");
+  const buttonRegister = document.createElement("button");
+  const buttonLogin = document.createElement("button");
 
-    buttonRegister.addEventListener('click', () => onNavigate('/register'));
-    buttonLogin.addEventListener('click', () => {onNavigate ('/');
-    console.log ('Bienvenidos, se inicio sesion')
-});
-    
+  buttonRegister.textContent = "Registrate";
+  buttonLogin.textContent = "Iniciar Sesión";
 
-    logindiv.appendChild(buttonRegister);
-    logindiv.appendChild(buttonLogin);
+  buttonRegister.addEventListener("click", () => onNavigate("/register"));
+  buttonLogin.addEventListener("click", () => {
+    onNavigate("/");
+    console.log("Bienvenidos, se inicio sesion");
+  });
 
-    return logindiv;
+  logindiv.appendChild(buttonRegister);
+  logindiv.appendChild(buttonLogin);
 
-
+  return logindiv;
 };

@@ -1,6 +1,6 @@
 // Interacción con el DOM de registro
-import { onNavigate } from "../main.js";
-export const Register = () => {
+
+export const Register = (onNavigate) => {
   const registerdiv = document.createElement("div");
   registerdiv.textContent = "Bienvenido al registro";
   const buttonLogin = document.createElement("button");
