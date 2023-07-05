@@ -58,7 +58,7 @@ export const Register = (onNavigate) => {
                             placeholder="Repetir contraseña"
                           />
 
-                          <input type="submit" value="Registrarse" class="btn btn--primary" />
+                          <input type="submit" value="Registrarse" id="btnRegister" class="btn btn--primary" />
                         </form>`;
   const registerButtons = `<div>
                             <p class="registerButtons__o marginBottom_8">o</p>
@@ -67,7 +67,7 @@ export const Register = (onNavigate) => {
                             </button>
                             <p class="register__Account">
                                 ¿Tienes cuenta?
-                                <a href="" class="registerForm_link--blue">Ingresa</a>
+                                <a id="linkLogin" class="registerForm__link--blue">Ingresa</a>
                             </p>
                           </div>`;
 
@@ -83,6 +83,15 @@ export const Register = (onNavigate) => {
   const registerDiv = document.createElement("div");
   registerDiv.innerHTML = register;
   registerDiv.classList.add("container__r")
+
+  const linkLogin = registerDiv.querySelector("#linkLogin");
+  const buttonRegister = registerDiv.querySelector("#btnRegister");
+
+  linkLogin.addEventListener("click", () => onNavigate("/"));
+  buttonRegister.addEventListener("click", () => {
+    onNavigate("/register");
+    console.log("Bienvenido a la sociedad de los gatos");
+  });
 
   return registerDiv;
 };

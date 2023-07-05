@@ -93,7 +93,7 @@
   text-decoration-line: underline;
 }
 
-.loginForm__link--blue, .register__link--blue {
+.loginForm__link--blue, .registerForm__link--blue {
   color: #1464f6;
 }
 
