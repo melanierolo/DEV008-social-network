@@ -41,11 +41,11 @@ export const Login = (onNavigate) => {
   const login = `<section class="sectionLeft">
                   </section>
                   <section class="sectionRight">
-                   <div class="login">
-                    ${loginLogo}
-                    ${loginForm}
-                    ${loginButtons}
-                   </div>
+                    <div class="login">
+                      ${loginLogo}
+                      ${loginForm}
+                      ${loginButtons}
+                    </div>
                   </section>`;
 
   const loginDiv = document.createElement("div");
