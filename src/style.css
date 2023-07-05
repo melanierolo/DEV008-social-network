@@ -17,16 +17,33 @@
   height: 100vh;
 }
 
-.login {
+/*-------------Page REGISTER-------------------*/
+
+.container__r{
+  display: flex;
+
+}
+
+.sectionRightRegister {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ebffff;
+  height: 100vh;
+}
+
+
+.login, .register {
   width: 250px;
-  height: 460px;
+  height: auto;
   border-radius: 25px;
   background: #fff;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
   padding: 16px 10px;
 }
 
-.loginLogo {
+.loginLogo, .registerLogo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,31 +51,31 @@
   justify-content: end;
 }
 
-.loginLogo__img {
+.loginLogo__img, .registerLogo__img {
   width: 54.521px;
   height: 50px;
 }
 
-.loginLogo__title {
+.loginLogo__title, .registerLogo__title {
   color: #000;
   font-size: 24px;
   font-weight: 600;
   line-height: normal;
 }
 
-.loginForm {
+.loginForm, .registerForm {
   display: flex;
   flex-direction: column;
 }
 
-.loginForm__label {
+.loginForm__label, .registerForm__label {
   color: #000;
   font-size: 16px;
   font-weight: 400;
   line-height: normal;
 }
 
-.loginForm__input {
+.loginForm__input, .registerForm__input {
   height: 36px;
   flex-shrink: 0;
   align-self: stretch;
@@ -67,25 +84,30 @@
   padding: 4px 10px;
 }
 
-.loginForm__link {
+.loginForm__link, .register__link {
   cursor: pointer;
 }
 
-.loginForm__link--black {
+.loginForm__link--black, .register__link--black {
   color: #000;
   text-decoration-line: underline;
 }
 
-.loginForm__link--blue {
+.loginForm__link--blue, .register__link--blue {
   color: #1464f6;
 }
 
-.loginButtons__o {
+.loginButtons__o, .registerButtons__o {
   color: #000;
   text-align: center;
   font-size: 16px;
   font-weight: 400;
   line-height: normal;
+}
+
+.register__Account{ 
+  text-align: center;
+
 }
 
 /*buttons css*/
@@ -135,6 +157,7 @@
 }
 
 @media screen and (min-width: 480px) {
+  /*Login*/
   .sectionRight {
     flex: 1;
   }
@@ -147,4 +170,23 @@
     background-size: 492px 800px;
     background-position: center;
   }
+  /*Register*/
+  @media screen and (min-width: 480px) {
+    .container__r{
+      flex-direction: row-reverse;
+    }
+    .sectionRightRegister {
+      flex: 1;
+    }
+    .sectionLeftRegister {
+      flex: 1;
+      background-color: #fff;
+      /*login image*/
+      background: url("./assets/images/gatito_registro.png") transparent 15px 50%
+        no-repeat;
+      background-size: 492px 600px;
+      background-position: center;
+    }
+  }
 }
+

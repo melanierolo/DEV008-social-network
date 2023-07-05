@@ -61,11 +61,11 @@ export const Register = (onNavigate) => {
                           <input type="submit" value="Registrarse" class="btn btn--primary" />
                         </form>`;
   const registerButtons = `<div>
-                            <p class="register__o marginBottom_8">o</p>
+                            <p class="registerButtons__o marginBottom_8">o</p>
                             <button class="btn btn--google marginBottom_16">
                                 Continua con Google
                             </button>
-                            <p class="register__register">
+                            <p class="register__Account">
                                 ¿Tienes cuenta?
                                 <a href="" class="registerForm_link--blue">Ingresa</a>
                             </p>
@@ -82,6 +82,7 @@ export const Register = (onNavigate) => {
 
   const registerDiv = document.createElement("div");
   registerDiv.innerHTML = register;
+  registerDiv.classList.add("container__r")
 
   return registerDiv;
 };
