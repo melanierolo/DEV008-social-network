@@ -3,6 +3,7 @@
 import { Login } from "./components/login.js";
 import { Register } from "./components/register.js";
 import { Feed } from "./components/feed.js";
+import "./lib/firebase.js";
 
 const rootDiv = document.getElementById("root");
 

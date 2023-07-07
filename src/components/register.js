@@ -1,3 +1,6 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../lib/firebase.js";
+
 // Interacción con el DOM de registro
 
 export const Register = (onNavigate) => {
@@ -15,7 +18,7 @@ export const Register = (onNavigate) => {
                           <p class="registerLogo__title">CatsSociety</p>
                         </div>`;
 
-  const registerForm = `<form class="registerForm">
+  const registerForm = `<form id="registerFormId" class="registerForm">
                           <label for="userName" class="registerForm__label">Nombre:</label>
                           <input
                             type="Name"
@@ -82,15 +85,41 @@ export const Register = (onNavigate) => {
 
   const registerDiv = document.createElement("div");
   registerDiv.innerHTML = register;
-  registerDiv.classList.add("container__r")
+  registerDiv.classList.add("container__r");
 
   const linkLogin = registerDiv.querySelector("#linkLogin");
-  const buttonRegister = registerDiv.querySelector("#btnRegister");
+  /*const buttonRegister = registerDiv.querySelector("#btnRegister");
 
   linkLogin.addEventListener("click", () => onNavigate("/"));
   buttonRegister.addEventListener("click", () => {
     onNavigate("/register");
     console.log("Bienvenido a la sociedad de los gatos");
+  });*/
+
+  // Form Register
+  const registerFormId = registerDiv.querySelector("#registerFormId");
+  console.log("ver form:", registerFormId);
+
+  registerFormId.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const userEmail = registerFormId["userEmail"].value;
+    const userPassword = registerFormId["userPassword"].value;
+
+    console.log(userEmail, userPassword);
+
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        userEmail,
+        userPassword
+      );
+      console.log(userCredentials);
+    } catch (error) {
+      console.log(error);
+    }
+
+    //Reset the form here
+    registerFormId.reset();
   });
 
   return registerDiv;
