@@ -1,3 +1,6 @@
+import { signOut } from "firebase/auth";
+import { auth } from "../lib/firebase.js";
+
 export function Header(onNavigate) {
   // Template String
   const logoHeader = `<div>LOGO</div>`;
@@ -22,6 +25,7 @@ export function Header(onNavigate) {
 
   const myPosts = headerHtml.querySelector("#myPosts");
   const feeds = headerHtml.querySelector("#feeds");
+  const logOut = headerHtml.querySelector("#logOut");
 
   myPosts.addEventListener("click", () => {
     onNavigate("/myPosts");
@@ -29,6 +33,11 @@ export function Header(onNavigate) {
 
   feeds.addEventListener("click", () => {
     onNavigate("/feed");
+  });
+  logOut.addEventListener("click", async () => {
+    await signOut(auth);
+    console.log(signOut(auth));
+    console.log("user signed out");
   });
 
   return headerHtml;

@@ -28,9 +28,9 @@ export const onNavigate = (pathname) => {
 };
 
 //Obteniendo el usuario con sesión activa
-/*onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(auth, async (user) => {
   console.log("verificando usuario ", user);
-});*/
+});
 
 const component = routes[window.location.pathname];
 // history
