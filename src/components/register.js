@@ -115,11 +115,19 @@ export const Register = (onNavigate) => {
       );
       console.log(userCredentials);
     } catch (error) {
-      console.log(error);
+      if (error.code === "auth/email-already-in-use") {
+        alert("El correo está en uso.");
+      } else if (error.code === "auth/invalid-email") {
+        alert("Correo inválido.");
+      } else if (error.code === "auth/weak-password") {
+        alert("La contraseña es débil.");
+      } else if (error.code) {
+        alert("Algo ocurrio mal.");
+      }
     }
 
     //Reset the form here
-    registerFormId.reset();
+    //registerFormId.reset();
   });
 
   return registerDiv;
