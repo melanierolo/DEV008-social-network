@@ -88,9 +88,8 @@ export const Register = (onNavigate) => {
   registerDiv.classList.add("container__r");
 
   const linkLogin = registerDiv.querySelector("#linkLogin");
-  /*const buttonRegister = registerDiv.querySelector("#btnRegister");
-
   linkLogin.addEventListener("click", () => onNavigate("/"));
+  /*const buttonRegister = registerDiv.querySelector("#btnRegister");
   buttonRegister.addEventListener("click", () => {
     onNavigate("/register");
     console.log("Bienvenido a la sociedad de los gatos");

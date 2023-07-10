@@ -49,8 +49,8 @@ export const Login = (onNavigate) => {
                   </section>`;
 
   const loginDiv = document.createElement("div");
-  loginDiv.innerHTML = login;
   loginDiv.classList.add("container");
+  loginDiv.innerHTML = login;
 
   const linkRegister = loginDiv.querySelector("#linkRegister");
   const buttonLogin = loginDiv.querySelector("#btnLogin");
