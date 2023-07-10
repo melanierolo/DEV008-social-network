@@ -1,6 +1,16 @@
-export const Feed = () => {
-  const feeddiv = document.createElement('div');
-  feeddiv.textContent = 'Bienvenido al Feed';
+import { Header } from "./header.js";
 
-  return feeddiv;
+export const Feed = (onNavigate) => {
+  // Parent
+  const feedDiv = document.createElement("div");
+
+  // Childs
+  const headerHtml = Header(onNavigate);
+  const contentFeed = document.createElement("div");
+  contentFeed.textContent = "Bienvenido al Feed";
+
+  feedDiv.appendChild(headerHtml);
+  feedDiv.appendChild(contentFeed);
+
+  return feedDiv;
 };
