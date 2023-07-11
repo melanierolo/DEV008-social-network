@@ -1,7 +1,12 @@
 // Funciones para la interacción con el DOM del login y la vista(create element o template string)
 
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../lib/firebase";
+import { async } from "regenerator-runtime";
 export const Login = (onNavigate) => {
   /*const logindiv = document.createElement("div");
   const buttonRegister = document.createElement("button");
@@ -36,7 +41,7 @@ export const Login = (onNavigate) => {
 
   const loginButtons = `<div class="loginButtons">
                           <h4 class="loginButtons__o marginBottom_8">o</h4>
-                          <button class="btn btn--google marginBottom_16">Continua con Google</button>
+                          <button id="loginGoogle" class="btn btn--google marginBottom_16">Continua con Google</button>
                           <p>¿No tienes una cuenta? <a class="loginForm__link loginForm__link--blue" id="linkRegister">Regístrate</a></p>
                         </div>`;
 
@@ -88,6 +93,20 @@ buttonLogin.addEventListener("click", () => {
       } else {
         alert(error.message, "error");
       }
+    }
+  });
+  // -------Login Google-------
+  const googleButton = loginDiv.querySelector("#loginGoogle");
+  googleButton.addEventListener("click", async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const googleCredentials = await signInWithPopup(auth, provider);
+      console.log(googleCredentials);
+      if (googleCredentials.operationType === "signIn") {
+        onNavigate("/feed");
+      }
+    } catch (error) {
+      console.log(error);
     }
   });
 
