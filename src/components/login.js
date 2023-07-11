@@ -1,5 +1,7 @@
 // Funciones para la interacción con el DOM del login y la vista(create element o template string)
 
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../lib/firebase";
 export const Login = (onNavigate) => {
   /*const logindiv = document.createElement("div");
   const buttonRegister = document.createElement("button");
@@ -53,12 +55,40 @@ export const Login = (onNavigate) => {
   loginDiv.innerHTML = login;
 
   const linkRegister = loginDiv.querySelector("#linkRegister");
-  const buttonLogin = loginDiv.querySelector("#btnLogin");
-
   linkRegister.addEventListener("click", () => onNavigate("/register"));
-  buttonLogin.addEventListener("click", () => {
-    onNavigate("/");
+  /*const buttonLogin = loginDiv.querySelector("#btnLogin");
+buttonLogin.addEventListener("click", () => {
+    onNavigate("/");<
     console.log("Bienvenidos, se inicio sesion");
+  });*/
+  const loginFormId = loginDiv.querySelector("#loginForm");
+  console.log(loginFormId);
+  loginFormId.addEventListener("submit", async (e) => {
+    console.log("miau");
+    e.preventDefault();
+    const userEmail = loginFormId["userEmail"].value;
+    const password = loginFormId["userPassword"].value;
+    console.log(userEmail, password);
+
+    try {
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        userEmail,
+        password
+      );
+      if (userCredentials.operationType === "signIn") {
+        onNavigate("/feed");
+      }
+      console.log(userCredentials);
+    } catch (error) {
+      if (error.code === "auth/wrong-password") {
+        alert("Contreseña incorrecta");
+      } else if (error.code === "auth/user-not-found") {
+        alert("Usuario no encontrado");
+      } else {
+        alert(error.message, "error");
+      }
+    }
   });
 
   return loginDiv;
