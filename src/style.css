@@ -205,10 +205,10 @@
   height: 60px;
 }
 
-.logoHeader {
+.header__logoHeader {
   position: fixed;
   z-index: 100;
-  top: 2px;
+  top: 5px;
   right: calc(50% - 25px);
 }
 .logoHeader__img {
@@ -316,4 +316,36 @@
 .showMenu,
 .showMenuTopic {
   transform: translateY(0);
+}
+
+@media screen and (min-width: 480px) {
+  .header__menuTopics {
+    display: none;
+  }
+
+  .header__logoHeader {
+    left: 20px;
+  }
+  .header__logoHeader::after {
+    content: "CatsSociety";
+    font-size: 40px;
+    font-weight: 600;
+    line-height: normal;
+    position: relative;
+    top: -10px;
+  }
+  .menuProfile {
+    width: 280px;
+    height: 550px;
+    z-index: -1;
+    top: 60px;
+    left: calc(100vw + 150px);
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+    background: #fff;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+  }
+  .showMenu {
+    transform: translate(-440px, 0px);
+  }
 }

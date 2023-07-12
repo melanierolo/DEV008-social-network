@@ -3,34 +3,29 @@ import { auth } from "../lib/firebase.js";
 
 export function Header(onNavigate) {
   // Template String
-  const logoHeader = `<div class="logoHeader">
-                        <img class="logoHeader__img" src="./assets/images/catsSociety--logo.png" alt="" />
-                      </div>`;
-  const menuProfile = `<nav>
-        <ul class="menuProfile">
-          <li class="menuItemProfile"><img class="menuProfile__img"src="./assets/icons/userIcon.png" alt="userIcon" /></li>
-          <li class="menuItemProfile"><a id="userName">Nombre de usuario</a></li>
-          <li class="menuItemProfile"><a id="userNickName">@username</a></li>
-          <hr />
-          <li class="menuItemProfile">
-            <a id="myPosts"><img class="menuIconProfile"src="./assets/icons/userIcon.png" alt="userIcon" />Mis publicaciones</a>
-          </li>
-          <li class="menuItemProfile">
-            <a id="feeds"><img class="menuIconProfile"src="./assets/icons/postCat.png" alt="postCat" />Feeds</a>
-          </li>
-          <li class="menuItemProfile">
-            <a id="configuration"> <img class="menuIconProfile"src="./assets/icons/blueGear.png" alt="gearIcon" />Configuración</a>
-          </li>
-          <hr />
-          <li class="menuItemProfile"><a id="logOut">Cerrar Sesión</a></li>
-        </ul>
-        <button class="hamburger">
-        <img class="profileIcon" src="./assets/icons/account-icon.svg"/>
-        <img class="closeIcon" src="./assets/icons/close-icon.png"/>
-      </button>
-  </nav>`;
-  const menuTopics = `<nav>
-                        <ul class="menuTopics">
+  const logoHeader = `<img class="logoHeader__img" src="./assets/images/catsSociety--logo.png" alt="" />`;
+  const menuProfile = `<ul class="menuProfile">
+                        <li class="menuItemProfile"><img class="menuProfile__img"src="./assets/icons/userIcon.png" alt="userIcon" /></li>
+                        <li class="menuItemProfile"><a id="userName">Nombre de usuario</a></li>
+                        <li class="menuItemProfile"><a id="userNickName">@username</a></li>
+                        <hr />
+                        <li class="menuItemProfile">
+                          <a id="myPosts"><img class="menuIconProfile"src="./assets/icons/userIcon.png" alt="userIcon" />Mis publicaciones</a>
+                        </li>
+                        <li class="menuItemProfile">
+                          <a id="feeds"><img class="menuIconProfile"src="./assets/icons/postCat.png" alt="postCat" />Feeds</a>
+                        </li>
+                        <li class="menuItemProfile">
+                          <a id="configuration"> <img class="menuIconProfile"src="./assets/icons/blueGear.png" alt="gearIcon" />Configuración</a>
+                        </li>
+                        <hr />
+                        <li class="menuItemProfile"><a id="logOut">Cerrar Sesión</a></li>
+                      </ul>
+                      <button class="hamburger">
+                        <img class="profileIcon" src="./assets/icons/account-icon.svg"/>
+                        <img class="closeIcon" src="./assets/icons/close-icon.png"/>
+                      </button>`;
+  const menuTopics = `<ul class="menuTopics">
                           <li class="menuItemTopics">
                             <a id="understandCat"><img class="menuIcon" src="./assets/icons/Heart.png" alt="heart-icon" />¿Cómo entender a un gato?</a></li>
                           <li class="menuItemTopics">
@@ -50,14 +45,11 @@ export function Header(onNavigate) {
                         <button class="hamburgerTopic">
                                 <img class="profileIconTopic" src="./assets/icons/hamburger-icon.svg"/>
                                 <img class="closeIconTopic" src="./assets/icons/close-icon.png"/>
-                        </button>
-                      </nav>`;
+                        </button>`;
 
-  const headerTemplate = `<div class="header">
-  <div>${menuTopics}</div>
-  <div>${logoHeader}</div>
-  <div>${menuProfile}</div>
-  </div>`;
+  const headerTemplate = `<nav class="header__menuTopics">${menuTopics}</nav>
+                          <div class="header__logoHeader">${logoHeader}</div>
+                          <nav class="header__menuProfile">${menuProfile}</nav>`;
 
   // DOM
   const headerHtml = document.createElement("div");
