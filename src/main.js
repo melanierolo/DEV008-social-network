@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./lib/firebase.js";
 import "./lib/firebase.js";
 import { MyPosts } from "./components/myPosts.js";
+import { PublishPost } from "./components/publishPost.js";
 
 const rootDiv = document.getElementById("root");
 
@@ -15,6 +16,7 @@ const routes = {
   "/register": Register,
   "/feed": Feed,
   "/myPosts": MyPosts,
+  "/publishPost":PublishPost,
 };
 
 //Navegando por las rutas

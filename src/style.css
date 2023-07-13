@@ -84,7 +84,7 @@
   padding: 4px 10px;
 }
 
-.loginForm__link, .register__link {
+.loginForm__link, .register__link,.registerForm__link--blue {
   cursor: pointer;
 }
 
