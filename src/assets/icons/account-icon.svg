@@ -1,0 +1,10 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Account box" clip-path="url(#clip0_74_529)">
+<path id="Vector" d="M6 10V38C6 40.2 7.78 42 10 42H38C40.2 42 42 40.2 42 38V10C42 7.8 40.2 6 38 6H10C7.78 6 6 7.8 6 10ZM30 18C30 21.32 27.32 24 24 24C20.68 24 18 21.32 18 18C18 14.68 20.68 12 24 12C27.32 12 30 14.68 30 18ZM12 34C12 30 20 27.8 24 27.8C28 27.8 36 30 36 34V36H12V34Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="clip0_74_529">
+<rect width="48" height="48" fill="white"/>
+</clipPath>
+</defs>
+</svg>
