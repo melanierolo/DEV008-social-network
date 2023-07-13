@@ -1,7 +1,20 @@
+@font-face {
+  font-family: Sora;
+  src: url(./assets/fonts/Sora-Bold.ttf), url(./assets/fonts/Sora-ExtraBold.ttf),
+    url(./assets/fonts/Sora-ExtraLight.ttf), url(./assets/fonts/Sora-Light.ttf),
+    url(./assets/fonts/Sora-Medium.ttf),
+    url(./assets/fonts/Sora-Regular.ttf) url(./assets/fonts/Sora-SemiBold.ttf),
+    url(./assets/fonts/Sora-Thin.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: Sora, sans-serif;
 }
 
 /*-------------Page LOGIN-------------------*/
@@ -90,7 +103,8 @@
 }
 
 .loginForm__link,
-.register__link,.registerForm__link--blue {
+.register__link,
+.registerForm__link--blue {
   cursor: pointer;
 }
 
