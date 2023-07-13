@@ -8,7 +8,7 @@ export function Header(onNavigate) {
                         <li class="menuItemProfile"><img class="menuProfile__img"src="./assets/icons/userIcon.png" alt="userIcon" /></li>
                         <li class="menuItemProfile"><a id="userName">Nombre de usuario</a></li>
                         <li class="menuItemProfile"><a id="userNickName">@username</a></li>
-                        <hr />
+                        <hr class="menu__line" />
                         <li class="menuItemProfile">
                           <a id="myPosts"><img class="menuIconProfile"src="./assets/icons/userIcon.png" alt="userIcon" />Mis publicaciones</a>
                         </li>
@@ -18,7 +18,7 @@ export function Header(onNavigate) {
                         <li class="menuItemProfile">
                           <a id="configuration"> <img class="menuIconProfile"src="./assets/icons/blueGear.png" alt="gearIcon" />Configuración</a>
                         </li>
-                        <hr />
+                        <hr class="menu__line" />
                         <li class="menuItemProfile"><a id="logOut">Cerrar Sesión</a></li>
                       </ul>
                       <button class="hamburger">
@@ -34,7 +34,7 @@ export function Header(onNavigate) {
                             <a id="tips"><img class="menuIcon" src="./assets/icons/AskQuestion.png" alt="tip-icon" />Tips</a></li>
                           <li class="menuItemTopics">
                             <a id="curiosities"><img class="menuIcon" src="./assets/icons/LightOn.png" alt="curiosities icon" />Curiosidades</a></li>
-                          <hr />
+                          <hr class="menu__line" />
                           <li class="menuItemTopics">
                             <a id="tipDay"><img class="menuIcon" src="./assets/icons/Detective.png" alt="tipDay-icon" />Tip/dato del día</a></li>
                           <li class="menuItemTopics"><a id="vet">
