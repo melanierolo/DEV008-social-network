@@ -90,7 +90,7 @@
 }
 
 .loginForm__link,
-.register__link {
+.register__link,.registerForm__link--blue {
   cursor: pointer;
 }
 
