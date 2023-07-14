@@ -1,4 +1,6 @@
 import { Header } from "./header.js";
+import { PublishPost } from "./publishPost.js";
+import { addPost } from "../lib/firebase.js";
 
 export const Feed = (onNavigate) => {
   // Parent
@@ -6,11 +8,23 @@ export const Feed = (onNavigate) => {
 
   // Childs
   const headerHtml = Header(onNavigate);
-  const contentFeed = document.createElement("div");
-  contentFeed.textContent = "Bienvenido al Feed";
+  const publishPostHtml = PublishPost();
 
   feedDiv.appendChild(headerHtml);
-  feedDiv.appendChild(contentFeed);
+  feedDiv.appendChild(publishPostHtml);
 
+  const buttonPublish = publishPostHtml.querySelector("#buttonPublish");
+  const inputTextPublish = publishPostHtml.querySelector("#inputTextPublish");
+
+  buttonPublish.addEventListener("click", () => {
+    const userName = "Panchito";
+    const likes = 8;
+    const img = "/dadasda/userPruebita.png";
+    const textPublish = inputTextPublish.value;
+
+    console.log("hice click", textPublish);
+    addPost(img, likes, userName, textPublish);
+    inputTextPublish.value = "";
+  });
   return feedDiv;
 };

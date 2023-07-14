@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { collection, getFirestore, getDocs, addDoc } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,3 +23,35 @@ console.log(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+
+/* ------------------POSTS------------------------- */
+// init firebase app
+
+// init services
+const db = getFirestore();
+
+// collection ref
+const colRef = collection(db, "posts");
+
+// get collection data
+getDocs(colRef)
+  .then((snapshot) => {
+    let posts = [];
+    snapshot.docs.forEach((doc) => {
+      posts.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(posts);
+  })
+  .catch((error) => {
+    console.log(error.message);
+  });
+
+// adding documents
+export const addPost = (img, like, name, post) => {
+  addDoc(colRef, {
+    user_img: img,
+    user_likes: like,
+    user_name: name,
+    user_post: post,
+  });
+};
