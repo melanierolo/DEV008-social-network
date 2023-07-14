@@ -8,6 +8,7 @@ import {
   addDoc,
   onSnapshot,
 } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -39,13 +40,21 @@ const db = getFirestore();
 // collection ref
 const colRef = collection(db, "posts");
 
-// real time collection data
-onSnapshot(colRef, (snapshot) => {
-  let posts = [];
-  snapshot.docs.forEach((doc) => {
-    posts.push({ ...doc.data(), id: doc.id });
-  });
-  console.log("Posts:", posts);
+// user authentication
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    // real time collection data
+    onSnapshot(colRef, (snapshot) => {
+      let posts = [];
+      snapshot.docs.forEach((doc) => {
+        posts.push({ ...doc.data(), id: doc.id });
+      });
+      console.log("Posts:", posts);
+    });
+  } else {
+    console.log("el usuario no está autenticado");
+  }
 });
 
 // adding documents
