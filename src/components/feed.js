@@ -1,6 +1,8 @@
 import { Header } from "./header.js";
 import { PublishPost } from "./publishPost.js";
 import { addPost } from "../lib/firebase.js";
+import { queryPosts } from "../lib/firebase.js";
+import { MyPosts } from "./myPosts.js";
 
 export const Feed = (onNavigate) => {
   // Parent
@@ -25,6 +27,24 @@ export const Feed = (onNavigate) => {
     console.log("hice click", textPublish);
     addPost(img, likes, userName, textPublish);
     inputTextPublish.value = "";
+    onNavigate("/feed");
   });
+
+  let posts = [];
+  queryPosts()
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        posts.push({ ...doc.data(), id: doc.id });
+      });
+      posts.forEach((post) => {
+        // Show all Data in HTML
+        const myPostsHtml = MyPosts(post.user_name, post.user_post);
+        feedDiv.appendChild(myPostsHtml);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
   return feedDiv;
 };

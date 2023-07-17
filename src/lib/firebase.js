@@ -40,22 +40,8 @@ const db = getFirestore();
 // collection ref
 const colRef = collection(db, "posts");
 
-// user authentication
-
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    // real time collection data
-    onSnapshot(colRef, (snapshot) => {
-      let posts = [];
-      snapshot.docs.forEach((doc) => {
-        posts.push({ ...doc.data(), id: doc.id });
-      });
-      console.log("Posts:", posts);
-    });
-  } else {
-    console.log("el usuario no está autenticado");
-  }
-});
+// database firestore - collection data
+export const queryPosts = async () => getDocs(colRef);
 
 // adding documents
 export const addPost = (img, like, name, post) => {

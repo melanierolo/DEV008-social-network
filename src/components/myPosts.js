@@ -1,13 +1,13 @@
-export const MyPosts = () => {
+export const MyPosts = (name, textPost) => {
   const myPostsDiv = document.createElement("div");
 
   const post = `<div class="containerPost">
       <div class="containerUser">
         <img class="userBlack"src="./assets/icons/userBlack.svg" alt="user Black"/>
-        <a class="names" >Nombre del usuario</a>
+        <a class="names" >${name}</a>
      </div>
 
-      <p class="feedPost" >"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id."</p>
+      <p class="feedPost" >${textPost}</p>
       
       <div class="horizontal-line"></div>
      
