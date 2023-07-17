@@ -19,7 +19,13 @@ export const Feed = (onNavigate) => {
   const inputTextPublish = publishPostHtml.querySelector("#inputTextPublish");
 
   buttonPublish.addEventListener("click", () => {
-    const userName = "Panchito";
+    const getUserRegister = JSON.parse(localStorage.getItem("userRegister"));
+    console.log("sin json.parse", localStorage.getItem("userRegister"));
+    console.log(
+      "con json.parse",
+      JSON.parse(localStorage.getItem("userRegister"))
+    );
+    const userName = getUserRegister.email;
     const likes = 8;
     const img = "/dadasda/userPruebita.png";
     const textPublish = inputTextPublish.value;
