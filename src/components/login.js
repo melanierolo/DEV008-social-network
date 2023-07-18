@@ -7,23 +7,8 @@ import {
 } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import { async } from "regenerator-runtime";
+
 export const Login = (onNavigate) => {
-  /*const logindiv = document.createElement("div");
-  const buttonRegister = document.createElement("button");
-  const buttonLogin = document.createElement("button");
-
-  buttonRegister.textContent = "Registrate";
-  buttonLogin.textContent = "Iniciar Sesión";
-
-  buttonRegister.addEventListener("click", () => onNavigate("/register"));
-  buttonLogin.addEventListener("click", () => {
-    onNavigate("/");
-    console.log("Bienvenidos, se inicio sesion");
-  });
-
-  logindiv.appendChild(buttonRegister);
-  logindiv.appendChild(buttonLogin);*/
-
   //Template Strings
   const loginLogo = `<div class="loginLogo">
                         <img class="loginLogo__img" src="./assets/images/catsSociety--logo.png" alt="logo CatsSociety" />
@@ -61,11 +46,7 @@ export const Login = (onNavigate) => {
 
   const linkRegister = loginDiv.querySelector("#linkRegister");
   linkRegister.addEventListener("click", () => onNavigate("/register"));
-  /*const buttonLogin = loginDiv.querySelector("#btnLogin");
-buttonLogin.addEventListener("click", () => {
-    onNavigate("/");<
-    console.log("Bienvenidos, se inicio sesion");
-  });*/
+
   const loginFormId = loginDiv.querySelector("#loginForm");
   console.log(loginFormId);
   loginFormId.addEventListener("submit", async (e) => {
@@ -74,6 +55,7 @@ buttonLogin.addEventListener("click", () => {
     const userEmail = loginFormId["userEmail"].value;
     const password = loginFormId["userPassword"].value;
     console.log(userEmail, password);
+    let userRegister = {};
 
     try {
       const userCredentials = await signInWithEmailAndPassword(
@@ -82,6 +64,11 @@ buttonLogin.addEventListener("click", () => {
         password
       );
       if (userCredentials.operationType === "signIn") {
+        console.log("user-data", userCredentials);
+        userRegister["email"] = userCredentials.user.email;
+        userRegister["id"] = userCredentials.user.uid;
+        localStorage.setItem("userRegister", JSON.stringify(userRegister));
+        console.log(userRegister);
         onNavigate("/feed");
       }
       console.log(userCredentials);
