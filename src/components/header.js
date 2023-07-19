@@ -69,6 +69,7 @@ export function Header(onNavigate) {
   });
   logOut.addEventListener("click", async () => {
     await signOut(auth);
+    onNavigate("/ ");
     console.log(signOut(auth));
     console.log("user signed out");
   });
