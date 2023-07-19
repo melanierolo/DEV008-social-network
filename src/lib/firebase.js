@@ -44,11 +44,12 @@ const colRef = collection(db, "posts");
 export const queryPosts = async () => getDocs(colRef);
 
 // adding documents
-export const addPost = (img, like, name, post) => {
-  addDoc(colRef, {
+export const addPost = (img, like, name, post, userId) => {
+  return addDoc(colRef, {
     user_img: img,
     user_likes: like,
     user_name: name,
     user_post: post,
+    user_id: userId,
   });
 };

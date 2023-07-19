@@ -3,6 +3,7 @@ import { PublishPost } from "./publishPost.js";
 import { addPost } from "../lib/firebase.js";
 import { queryPosts } from "../lib/firebase.js";
 import { MyPosts } from "./myPosts.js";
+import { MyPostEdit } from "./myPostEdit.js";
 
 export const Feed = (onNavigate) => {
   // Parent
@@ -29,11 +30,16 @@ export const Feed = (onNavigate) => {
     const likes = 8;
     const img = "/dadasda/userPruebita.png";
     const textPublish = inputTextPublish.value;
+    const userId = JSON.parse(localStorage.getItem("userRegister")).id;
 
     console.log("hice click", textPublish);
-    addPost(img, likes, userName, textPublish);
-    inputTextPublish.value = "";
-    onNavigate("/feed");
+    addPost(img, likes, userName, textPublish, userId)
+      .then((result) => {
+        console.log("result *****************", result);
+        inputTextPublish.value = "";
+        onNavigate("/feed");
+      })
+      .catch((error) => console.log(error));
   });
 
   let posts = [];
@@ -42,9 +48,15 @@ export const Feed = (onNavigate) => {
       snapshot.docs.forEach((doc) => {
         posts.push({ ...doc.data(), id: doc.id });
       });
+      const userId = JSON.parse(localStorage.getItem("userRegister")).id;
       posts.forEach((post) => {
         // Show all Data in HTML
-        const myPostsHtml = MyPosts(post.user_name, post.user_post);
+        let myPostsHtml;
+        if (post.user_id === userId) {
+          myPostsHtml = MyPostEdit(post.user_name, post.user_post);
+        } else {
+          myPostsHtml = MyPosts(post.user_name, post.user_post);
+        }
         feedDiv.appendChild(myPostsHtml);
       });
     })
