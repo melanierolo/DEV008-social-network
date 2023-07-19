@@ -1,10 +1,10 @@
-export const MyPosts = (name, textPost) => {
+export const MyPosts = (name, textPost, photoUrl) => {
   const myPostsDiv = document.createElement("div");
 
   const post = `<div class="containerPost">
       <div class="containerUser">
-        <img class="userBlack"src="./assets/icons/userBlack.svg" alt="user Black"/>
-        <a class="names" >${name}</a>
+        <img class="userBlack"src="${photoUrl}" alt="user Black"/>
+        <p class="names" >${name}</p>
      </div>
       
       <p class="feedPost" >${textPost}</p>

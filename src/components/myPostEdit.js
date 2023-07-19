@@ -1,9 +1,9 @@
-export const MyPostEdit = (name, textPost, author) => {
+export const MyPostEdit = (name, textPost, photoUrl) => {
   const myPostsDiv = document.createElement("div");
 
   const post = `<div class="containerPost">
       <div class="containerUser">
-        <img class="userBlack"src="./assets/icons/userBlack.svg" alt="user Black"/>
+        <img class="userBlack"src="${photoUrl}" alt="user Black"/>
         <a class="names" >${name}</a>
         <p>Esta es mi publicación</p>
     </div>

@@ -86,10 +86,20 @@ export const Login = (onNavigate) => {
   const googleButton = loginDiv.querySelector("#loginGoogle");
   googleButton.addEventListener("click", async () => {
     const provider = new GoogleAuthProvider();
+    let userRegister = {};
+    localStorage.removeItem("userRegister");
     try {
       const googleCredentials = await signInWithPopup(auth, provider);
       console.log(googleCredentials);
+
       if (googleCredentials.operationType === "signIn") {
+        console.log("user-data", googleCredentials);
+        userRegister["email"] = googleCredentials.user.email;
+        userRegister["id"] = googleCredentials.user.uid;
+        userRegister["photoUrl"] = googleCredentials.user.photoURL;
+        userRegister["name"] = googleCredentials.user.displayName;
+        localStorage.setItem("userRegister", JSON.stringify(userRegister));
+        console.log(userRegister);
         onNavigate("/feed");
       }
     } catch (error) {
