@@ -217,6 +217,8 @@ body {
   background-color: #00b4b8;
   padding: 0 4px;
   height: 60px;
+  position: sticky;
+  top: 0px;
 }
 
 .header__logoHeader {
@@ -346,7 +348,7 @@ body {
   }
   .header__logoHeader::after {
     content: "CatsSociety";
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 600;
     line-height: normal;
     position: relative;
@@ -360,7 +362,7 @@ body {
   .menuProfile {
     width: 250px;
     height: 320px;
-    z-index: -1;
+    z-index: 4;
     top: 60px;
     left: calc(100vw + 150px);
     transform: translate(-50%, -50%);
