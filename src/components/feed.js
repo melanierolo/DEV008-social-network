@@ -28,8 +28,7 @@ export const Feed = (onNavigate) => {
     );
     const userName = getUserRegister.email;
     const likes = 8;
-    const img = getUserRegister.photoUrl;
-    console.log ("img",img)
+    const img = "/dadasda/userPruebita.png";
     const textPublish = inputTextPublish.value;
     const userId = JSON.parse(localStorage.getItem("userRegister")).id;
 
@@ -51,14 +50,12 @@ export const Feed = (onNavigate) => {
       });
       const userId = JSON.parse(localStorage.getItem("userRegister")).id;
       posts.forEach((post) => {
-        console.log("post",post)
         // Show all Data in HTML
-      
         let myPostsHtml;
         if (post.user_id === userId) {
-          myPostsHtml = MyPostEdit(post.user_name, post.user_post, post.user_img);
+          myPostsHtml = MyPostEdit(post.user_name, post.user_post);
         } else {
-          myPostsHtml = MyPosts(post.user_name, post.user_post, post.user_img);
+          myPostsHtml = MyPosts(post.user_name, post.user_post);
         }
         feedDiv.appendChild(myPostsHtml);
       });

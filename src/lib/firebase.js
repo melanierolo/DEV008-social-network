@@ -7,6 +7,9 @@ import {
   getDocs,
   addDoc,
   onSnapshot,
+  Timestamp,
+  orderBy,
+  query
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -39,17 +42,20 @@ const db = getFirestore();
 
 // collection ref
 const colRef = collection(db, "posts");
+const queryOrdenByDate = query(colRef, orderBy("user_createdAt", "desc"))
 
 // database firestore - collection data
-export const queryPosts = async () => getDocs(colRef);
+export const queryPosts = async () => getDocs(queryOrdenByDate);
 
 // adding documents
 export const addPost = (img, like, name, post, userId) => {
+  const postDate = Timestamp.now();
   return addDoc(colRef, {
     user_img: img,
     user_likes: like,
     user_name: name,
     user_post: post,
     user_id: userId,
+    user_createdAt: postDate,
   });
 };
