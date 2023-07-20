@@ -56,7 +56,7 @@ export const Login = (onNavigate) => {
     const password = loginFormId["userPassword"].value;
     console.log(userEmail, password);
     let userRegister = {};
-
+    localStorage.removeItem("userRegister");
     try {
       const userCredentials = await signInWithEmailAndPassword(
         auth,
@@ -67,6 +67,7 @@ export const Login = (onNavigate) => {
         console.log("user-data", userCredentials);
         userRegister["email"] = userCredentials.user.email;
         userRegister["id"] = userCredentials.user.uid;
+        userRegister["photoUrl"] = "./assets/icons/Account circle.svg";
         localStorage.setItem("userRegister", JSON.stringify(userRegister));
         console.log(userRegister);
         onNavigate("/feed");
@@ -86,10 +87,20 @@ export const Login = (onNavigate) => {
   const googleButton = loginDiv.querySelector("#loginGoogle");
   googleButton.addEventListener("click", async () => {
     const provider = new GoogleAuthProvider();
+    let userRegister = {};
+    localStorage.removeItem("userRegister");
     try {
       const googleCredentials = await signInWithPopup(auth, provider);
       console.log(googleCredentials);
+
       if (googleCredentials.operationType === "signIn") {
+        console.log("user-data", googleCredentials);
+        userRegister["email"] = googleCredentials.user.email;
+        userRegister["id"] = googleCredentials.user.uid;
+        userRegister["photoUrl"] = googleCredentials.user.photoURL;
+        userRegister["name"] = googleCredentials.user.displayName;
+        localStorage.setItem("userRegister", JSON.stringify(userRegister));
+        console.log(userRegister);
         onNavigate("/feed");
       }
     } catch (error) {
