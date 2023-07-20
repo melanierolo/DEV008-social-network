@@ -56,7 +56,7 @@ export const Login = (onNavigate) => {
     const password = loginFormId["userPassword"].value;
     console.log(userEmail, password);
     let userRegister = {};
-
+    localStorage.removeItem("userRegister");
     try {
       const userCredentials = await signInWithEmailAndPassword(
         auth,
@@ -67,6 +67,7 @@ export const Login = (onNavigate) => {
         console.log("user-data", userCredentials);
         userRegister["email"] = userCredentials.user.email;
         userRegister["id"] = userCredentials.user.uid;
+        userRegister["photoUrl"] = "./assets/icons/Account circle.svg";
         localStorage.setItem("userRegister", JSON.stringify(userRegister));
         console.log(userRegister);
         onNavigate("/feed");
