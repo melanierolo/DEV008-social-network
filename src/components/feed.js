@@ -5,6 +5,7 @@ import { queryPosts } from "../lib/firebase.js";
 import { MyPosts } from "./myPosts.js";
 import { MyPostEdit } from "./myPostEdit.js";
 import { deletePost } from "../lib/firebase.js";
+import { ModalPostEdit } from "./modalPostEdit.js";
 
 export const Feed = (onNavigate) => {
   // Parent
@@ -14,9 +15,11 @@ export const Feed = (onNavigate) => {
   // Childs
   const headerHtml = Header(onNavigate);
   const publishPostHtml = PublishPost();
+  const modalPostEdit = ModalPostEdit();
 
   feedDiv.appendChild(headerHtml);
   feedDiv.appendChild(publishPostHtml);
+  feedDiv.appendChild(modalPostEdit);
 
   const buttonPublish = publishPostHtml.querySelector("#buttonPublish");
   const inputTextPublish = publishPostHtml.querySelector("#inputTextPublish");
@@ -79,6 +82,39 @@ export const Feed = (onNavigate) => {
           deletePost(dataset.id);
           onNavigate("/feed");
         });
+      });
+
+      // Edit Post
+      const buttonsEdit = feedDiv.querySelectorAll("#btn-edit");
+
+      buttonsEdit.forEach((button) => {
+        button.addEventListener("click", ({ target: { dataset } }) => {
+          console.log("click edit", dataset.id);
+          modalPostEdit.style.display = "block";
+          // id = text-${dataset.id}
+          console.log(
+            document.querySelector(`#text-${dataset.id}`).textContent
+          );
+          console.log("modal", modalPostEdit.querySelector("#modal-text"));
+          modalPostEdit.querySelector("#modal-text").textContent =
+            document.querySelector(`#text-${dataset.id}`).textContent;
+        });
+      });
+
+      // button cancel of Modal
+      const cancelButtonModal =
+        modalPostEdit.querySelector("#btn-modal-cancel");
+      console.log(cancelButtonModal);
+      cancelButtonModal.addEventListener("click", () => {
+        console.log("click en close");
+        modalPostEdit.style.display = "none";
+      });
+      // button save of Modal
+      const saveButtonModal = modalPostEdit.querySelector("#btn-modal-save");
+      console.log(saveButtonModal);
+      saveButtonModal.addEventListener("click", () => {
+        console.log("click en save");
+        modalPostEdit.style.display = "none";
       });
     })
     .catch((error) => {

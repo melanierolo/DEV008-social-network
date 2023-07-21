@@ -44,7 +44,7 @@ const db = getFirestore();
 
 // collection ref
 const colRef = collection(db, "posts");
-const queryOrdenByDate = query(colRef, orderBy("user_createdAt", "desc"))
+const queryOrdenByDate = query(colRef, orderBy("user_createdAt", "desc"));
 
 // database firestore - collection data
 export const queryPosts = async () => getDocs(queryOrdenByDate);
