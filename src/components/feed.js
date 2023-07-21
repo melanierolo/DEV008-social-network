@@ -4,10 +4,12 @@ import { addPost } from "../lib/firebase.js";
 import { queryPosts } from "../lib/firebase.js";
 import { MyPosts } from "./myPosts.js";
 import { MyPostEdit } from "./myPostEdit.js";
+import { deletePost } from "../lib/firebase.js";
 
 export const Feed = (onNavigate) => {
   // Parent
   const feedDiv = document.createElement("div");
+  feedDiv.classList.add("FeedContainer");
 
   // Childs
   const headerHtml = Header(onNavigate);
@@ -35,12 +37,15 @@ export const Feed = (onNavigate) => {
     console.log("hice click", textPublish);
     addPost(img, likes, userName, textPublish, userId)
       .then((result) => {
-        console.log("result *****************", result);
         inputTextPublish.value = "";
         onNavigate("/feed");
       })
       .catch((error) => console.log(error));
   });
+
+  const allPostsHtml = document.createElement("div");
+  allPostsHtml.classList.add("postsContainer");
+  feedDiv.appendChild(allPostsHtml);
 
   let posts = [];
   queryPosts()
@@ -49,19 +54,31 @@ export const Feed = (onNavigate) => {
         posts.push({ ...doc.data(), id: doc.id });
       });
       const userId = JSON.parse(localStorage.getItem("userRegister")).id;
+
+      // Show all Data in HTML
       posts.forEach((post) => {
-        // Show all Data in HTML
         let myPostsHtml;
         if (post.user_id === userId) {
           myPostsHtml = MyPostEdit(
             post.user_name,
             post.user_post,
-            post.user_img
+            post.user_img,
+            post.id
           );
         } else {
           myPostsHtml = MyPosts(post.user_name, post.user_post, post.user_img);
         }
-        feedDiv.appendChild(myPostsHtml);
+        allPostsHtml.appendChild(myPostsHtml);
+      });
+
+      // Delete Post
+      const buttonsDelete = feedDiv.querySelectorAll("#btn-delete");
+
+      buttonsDelete.forEach((button) => {
+        button.addEventListener("click", ({ target: { dataset } }) => {
+          deletePost(dataset.id);
+          onNavigate("/feed");
+        });
       });
     })
     .catch((error) => {

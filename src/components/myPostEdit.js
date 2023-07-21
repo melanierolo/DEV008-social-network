@@ -1,4 +1,4 @@
-export const MyPostEdit = (name, textPost, photoUrl) => {
+export const MyPostEdit = (name, textPost, photoUrl, postId) => {
   const myPostsDiv = document.createElement("div");
 
   const post = `<div class="containerPost">
@@ -6,6 +6,9 @@ export const MyPostEdit = (name, textPost, photoUrl) => {
         <img class="userBlack"src="${photoUrl}" alt="user Black"/>
         <a class="names" >${name}</a>
         <p>Esta es mi publicación</p>
+        <div>
+          <button id="btn-delete" class="btnDelete" data-id="${postId}">Eliminar</button>
+        </div>
     </div>
       
       <p class="feedPost" >${textPost}</p>

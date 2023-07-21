@@ -9,7 +9,9 @@ import {
   onSnapshot,
   Timestamp,
   orderBy,
-  query
+  query,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -59,3 +61,6 @@ export const addPost = (img, like, name, post, userId) => {
     user_createdAt: postDate,
   });
 };
+
+// Delete document
+export const deletePost = (id) => deleteDoc(doc(db, "posts", id));
