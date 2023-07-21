@@ -6,6 +6,9 @@ export const MyPostEdit = (name, textPost, photoUrl) => {
         <img class="userBlack"src="${photoUrl}" alt="user Black"/>
         <a class="names" >${name}</a>
         <p>Esta es mi publicación</p>
+        <div>
+          <button id="btn-delete" class="btnDelete">Eliminar</button>
+        </div>
     </div>
       
       <p class="feedPost" >${textPost}</p>

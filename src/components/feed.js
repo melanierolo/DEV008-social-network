@@ -8,6 +8,7 @@ import { MyPostEdit } from "./myPostEdit.js";
 export const Feed = (onNavigate) => {
   // Parent
   const feedDiv = document.createElement("div");
+  feedDiv.classList.add("FeedContainer");
 
   // Childs
   const headerHtml = Header(onNavigate);
@@ -42,6 +43,10 @@ export const Feed = (onNavigate) => {
       .catch((error) => console.log(error));
   });
 
+  const allPostsHtml = document.createElement("div");
+  allPostsHtml.classList.add("postsContainer");
+  feedDiv.appendChild(allPostsHtml);
+
   let posts = [];
   queryPosts()
     .then((snapshot) => {
@@ -49,8 +54,9 @@ export const Feed = (onNavigate) => {
         posts.push({ ...doc.data(), id: doc.id });
       });
       const userId = JSON.parse(localStorage.getItem("userRegister")).id;
+
+      // Show all Data in HTML
       posts.forEach((post) => {
-        // Show all Data in HTML
         let myPostsHtml;
         if (post.user_id === userId) {
           myPostsHtml = MyPostEdit(
@@ -61,7 +67,16 @@ export const Feed = (onNavigate) => {
         } else {
           myPostsHtml = MyPosts(post.user_name, post.user_post, post.user_img);
         }
-        feedDiv.appendChild(myPostsHtml);
+        allPostsHtml.appendChild(myPostsHtml);
+      });
+
+      // Delete Post
+      const buttonsDelete = feedDiv.querySelectorAll("#btn-delete");
+
+      buttonsDelete.forEach((button) => {
+        button.addEventListener("click", () => {
+          console.log("Hice click de eliminar");
+        });
       });
     })
     .catch((error) => {
