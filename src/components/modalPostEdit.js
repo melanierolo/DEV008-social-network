@@ -6,7 +6,7 @@ export const ModalPostEdit = () => {
   const modal = `
     <!-- Modal content -->
     <div class="modal-content">
-      <p id="modal-text">Some text in the Modal..</p>
+      <input id="modal-text">
       <button id="btn-modal-cancel" class="close">Cancelar</button>
       <button id="btn-modal-save" class="save">Guardar</button>
     </div>`;

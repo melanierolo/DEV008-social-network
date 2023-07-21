@@ -91,29 +91,28 @@ export const Feed = (onNavigate) => {
         button.addEventListener("click", ({ target: { dataset } }) => {
           console.log("click edit", dataset.id);
           modalPostEdit.style.display = "block";
-          // id = text-${dataset.id}
-          console.log(
-            document.querySelector(`#text-${dataset.id}`).textContent
-          );
-          console.log("modal", modalPostEdit.querySelector("#modal-text"));
-          modalPostEdit.querySelector("#modal-text").textContent =
+          // add text from post on the modal
+          modalPostEdit.querySelector("#modal-text").value =
             document.querySelector(`#text-${dataset.id}`).textContent;
+          modalPostEdit.setAttribute("data-id", `modal-${dataset.id}`);
         });
       });
 
       // button cancel of Modal
       const cancelButtonModal =
         modalPostEdit.querySelector("#btn-modal-cancel");
-      console.log(cancelButtonModal);
+
       cancelButtonModal.addEventListener("click", () => {
         console.log("click en close");
         modalPostEdit.style.display = "none";
       });
+
       // button save of Modal
       const saveButtonModal = modalPostEdit.querySelector("#btn-modal-save");
       console.log(saveButtonModal);
       saveButtonModal.addEventListener("click", () => {
-        console.log("click en save");
+        let textPostUpdate = modalPostEdit.querySelector("#modal-text").value;
+        console.log(textPostUpdate);
         modalPostEdit.style.display = "none";
       });
     })
