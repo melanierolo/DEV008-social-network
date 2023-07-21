@@ -4,6 +4,7 @@ import { addPost } from "../lib/firebase.js";
 import { queryPosts } from "../lib/firebase.js";
 import { MyPosts } from "./myPosts.js";
 import { MyPostEdit } from "./myPostEdit.js";
+import { deletePost } from "../lib/firebase.js";
 
 export const Feed = (onNavigate) => {
   // Parent
@@ -36,7 +37,6 @@ export const Feed = (onNavigate) => {
     console.log("hice click", textPublish);
     addPost(img, likes, userName, textPublish, userId)
       .then((result) => {
-        console.log("result *****************", result);
         inputTextPublish.value = "";
         onNavigate("/feed");
       })
@@ -62,7 +62,8 @@ export const Feed = (onNavigate) => {
           myPostsHtml = MyPostEdit(
             post.user_name,
             post.user_post,
-            post.user_img
+            post.user_img,
+            post.id
           );
         } else {
           myPostsHtml = MyPosts(post.user_name, post.user_post, post.user_img);
@@ -74,8 +75,9 @@ export const Feed = (onNavigate) => {
       const buttonsDelete = feedDiv.querySelectorAll("#btn-delete");
 
       buttonsDelete.forEach((button) => {
-        button.addEventListener("click", () => {
-          console.log("Hice click de eliminar");
+        button.addEventListener("click", ({ target: { dataset } }) => {
+          deletePost(dataset.id);
+          onNavigate("/feed");
         });
       });
     })
