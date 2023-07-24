@@ -6,6 +6,7 @@ import { MyPosts } from "./myPosts.js";
 import { MyPostEdit } from "./myPostEdit.js";
 import { deletePost } from "../lib/firebase.js";
 import { ModalPostEdit } from "./modalPostEdit.js";
+import { updatePost } from "../lib/firebase.js";
 
 export const Feed = (onNavigate) => {
   // Parent
@@ -74,7 +75,7 @@ export const Feed = (onNavigate) => {
         allPostsHtml.appendChild(myPostsHtml);
       });
 
-      // Delete Post
+      // --------------- Delete Post ---------------
       const buttonsDelete = feedDiv.querySelectorAll("#btn-delete");
 
       buttonsDelete.forEach((button) => {
@@ -84,7 +85,7 @@ export const Feed = (onNavigate) => {
         });
       });
 
-      // Edit Post
+      // --------------- Edit Post ---------------
       const buttonsEdit = feedDiv.querySelectorAll("#btn-edit");
 
       buttonsEdit.forEach((button) => {
@@ -107,12 +108,20 @@ export const Feed = (onNavigate) => {
         modalPostEdit.style.display = "none";
       });
 
-      // button save of Modal
+      // --------------- button save of Modal ----------------
       const saveButtonModal = modalPostEdit.querySelector("#btn-modal-save");
-      console.log(saveButtonModal);
+
       saveButtonModal.addEventListener("click", () => {
-        let textPostUpdate = modalPostEdit.querySelector("#modal-text").value;
-        console.log(textPostUpdate);
+        const textPostUpdate = modalPostEdit.querySelector("#modal-text").value;
+        const allPostId = modalPostEdit.getAttribute("data-id");
+        const postId = allPostId.slice(6);
+
+        // update post
+        updatePost(postId, textPostUpdate);
+
+        // onNavigate
+        onNavigate("/feed");
+
         modalPostEdit.style.display = "none";
       });
     })
