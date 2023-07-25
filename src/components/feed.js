@@ -5,6 +5,8 @@ import { queryPosts } from "../lib/firebase.js";
 import { MyPosts } from "./myPosts.js";
 import { MyPostEdit } from "./myPostEdit.js";
 import { deletePost } from "../lib/firebase.js";
+import { ModalPostEdit } from "./modalPostEdit.js";
+import { updatePost } from "../lib/firebase.js";
 
 export const Feed = (onNavigate) => {
   // Parent
@@ -14,9 +16,11 @@ export const Feed = (onNavigate) => {
   // Childs
   const headerHtml = Header(onNavigate);
   const publishPostHtml = PublishPost();
+  const modalPostEdit = ModalPostEdit();
 
   feedDiv.appendChild(headerHtml);
   feedDiv.appendChild(publishPostHtml);
+  feedDiv.appendChild(modalPostEdit);
 
   const buttonPublish = publishPostHtml.querySelector("#buttonPublish");
   const inputTextPublish = publishPostHtml.querySelector("#inputTextPublish");
@@ -71,7 +75,7 @@ export const Feed = (onNavigate) => {
         allPostsHtml.appendChild(myPostsHtml);
       });
 
-      // Delete Post
+      // --------------- Delete Post ---------------
       const buttonsDelete = feedDiv.querySelectorAll("#btn-delete");
 
       buttonsDelete.forEach((button) => {
@@ -79,6 +83,46 @@ export const Feed = (onNavigate) => {
           deletePost(dataset.id);
           onNavigate("/feed");
         });
+      });
+
+      // --------------- Edit Post ---------------
+      const buttonsEdit = feedDiv.querySelectorAll("#btn-edit");
+
+      buttonsEdit.forEach((button) => {
+        button.addEventListener("click", ({ target: { dataset } }) => {
+          console.log("click edit", dataset.id);
+          modalPostEdit.style.display = "block";
+          // add text from post on the modal
+          modalPostEdit.querySelector("#modal-text").value =
+            document.querySelector(`#text-${dataset.id}`).textContent;
+          modalPostEdit.setAttribute("data-id", `modal-${dataset.id}`);
+        });
+      });
+
+      // button cancel of Modal
+      const cancelButtonModal =
+        modalPostEdit.querySelector("#btn-modal-cancel");
+
+      cancelButtonModal.addEventListener("click", () => {
+        console.log("click en close");
+        modalPostEdit.style.display = "none";
+      });
+
+      // --------------- button save of Modal ----------------
+      const saveButtonModal = modalPostEdit.querySelector("#btn-modal-save");
+
+      saveButtonModal.addEventListener("click", () => {
+        const textPostUpdate = modalPostEdit.querySelector("#modal-text").value;
+        const allPostId = modalPostEdit.getAttribute("data-id");
+        const postId = allPostId.slice(6);
+
+        // update post
+        updatePost(postId, textPostUpdate);
+
+        // onNavigate
+        onNavigate("/feed");
+
+        modalPostEdit.style.display = "none";
       });
     })
     .catch((error) => {

@@ -12,6 +12,7 @@ import {
   query,
   doc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -44,7 +45,7 @@ const db = getFirestore();
 
 // collection ref
 const colRef = collection(db, "posts");
-const queryOrdenByDate = query(colRef, orderBy("user_createdAt", "desc"))
+const queryOrdenByDate = query(colRef, orderBy("user_createdAt", "desc"));
 
 // database firestore - collection data
 export const queryPosts = async () => getDocs(queryOrdenByDate);
@@ -64,3 +65,8 @@ export const addPost = (img, like, name, post, userId) => {
 
 // Delete document
 export const deletePost = (id) => deleteDoc(doc(db, "posts", id));
+
+// Update document
+export const updatePost = (id, newPost) => {
+  updateDoc(doc(db, "posts", id), { user_post: newPost });
+};

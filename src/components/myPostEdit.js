@@ -8,10 +8,11 @@ export const MyPostEdit = (name, textPost, photoUrl, postId) => {
         <p>Esta es mi publicación</p>
         <div>
           <button id="btn-delete" class="btnDelete" data-id="${postId}">Eliminar</button>
+          <button id="btn-edit" class="btnEdit" data-id="${postId}">Editar</button>
         </div>
     </div>
       
-      <p class="feedPost" >${textPost}</p>
+      <p id="text-${postId}"class="feedPost" >${textPost}</p>
       
       <div class="horizontal-line"></div>
       
