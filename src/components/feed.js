@@ -7,6 +7,7 @@ import { MyPostEdit } from "./myPostEdit.js";
 import { deletePost } from "../lib/firebase.js";
 import { ModalPostEdit } from "./modalPostEdit.js";
 import { updatePost } from "../lib/firebase.js";
+import { ModalDelete } from "./modalDelete.js";
 
 export const Feed = (onNavigate) => {
   // Parent
@@ -17,10 +18,12 @@ export const Feed = (onNavigate) => {
   const headerHtml = Header(onNavigate);
   const publishPostHtml = PublishPost();
   const modalPostEdit = ModalPostEdit();
+  const modalPostDelete = ModalDelete();
 
   feedDiv.appendChild(headerHtml);
   feedDiv.appendChild(publishPostHtml);
   feedDiv.appendChild(modalPostEdit);
+  feedDiv.appendChild(modalPostDelete);
 
   const buttonPublish = publishPostHtml.querySelector("#buttonPublish");
   const inputTextPublish = publishPostHtml.querySelector("#inputTextPublish");
@@ -76,14 +79,49 @@ export const Feed = (onNavigate) => {
       });
 
       // --------------- Delete Post ---------------
-      const buttonsDelete = feedDiv.querySelectorAll("#btn-delete");
+      const buttonsDelete = feedDiv.querySelectorAll(".btnDelete");
 
       buttonsDelete.forEach((button) => {
         button.addEventListener("click", ({ target: { dataset } }) => {
-          deletePost(dataset.id);
-          onNavigate("/feed");
+          modalPostDelete.style.display = "block"; 
+          // add attribute called data-id and its value
+          modalPostDelete.setAttribute("data-id", `modalDelete-${dataset.id}`);
         });
       });
+
+      const modalButtosnCancel = modalPostDelete.querySelectorAll(".close");
+      modalButtosnCancel.forEach((button) => {
+        button.addEventListener("click", ({ target: { dataset } }) => {
+          console.log("click edit", dataset.id);
+          modalPostDelete.style.display = "none";
+        });
+      });
+
+      const modalButtosnConfirm = modalPostDelete.querySelector("#btn-confirm");
+      console.log("----", modalButtosnConfirm);
+      modalButtosnConfirm.addEventListener("click", () => {
+        console.log ("se hizo click :)");
+        // get id of the modalDelete
+        const allPostId = modalPostDelete.getAttribute("data-id");
+        const postId = allPostId.slice(12);
+        console.log("-----",postId);
+      // Delete post - firebase
+         deletePost(postId);
+        onNavigate("/feed");
+      });
+
+      // --------------- Delete  ---------------
+      /* const buttonsPostDelete = feedDiv.querySelectorAll(".btnDelete");
+
+      buttonsPostDelete.forEach((button) => {
+        button.addEventListener("click", ({ target: { dataset } }) => {
+          console.log("click edit", dataset.id);
+          // add text from post on the modal
+          modalPostDelete.querySelector("#modal-text").value =
+            document.querySelector(`#text-${dataset.id}`).textContent;
+          modalPostDelete.setAttribute("data-id", `modal-${dataset.id}`);
+        });
+      }); */
 
       // --------------- Edit Post ---------------
       const buttonsEdit = feedDiv.querySelectorAll("#btn-edit");
@@ -95,6 +133,7 @@ export const Feed = (onNavigate) => {
           // add text from post on the modal
           modalPostEdit.querySelector("#modal-text").value =
             document.querySelector(`#text-${dataset.id}`).textContent;
+             // add attribute called data-id and its value
           modalPostEdit.setAttribute("data-id", `modal-${dataset.id}`);
         });
       });
@@ -116,7 +155,7 @@ export const Feed = (onNavigate) => {
         const allPostId = modalPostEdit.getAttribute("data-id");
         const postId = allPostId.slice(6);
 
-        // update post
+        // update post-firebase
         updatePost(postId, textPostUpdate);
 
         // onNavigate
