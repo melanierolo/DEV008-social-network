@@ -70,6 +70,14 @@
     brightness(94%) contrast(101%);
   cursor: pointer;
 }
+.colorLikeCat{
+  filter:invert(62%) sepia(87%) saturate(5000%) hue-rotate(161deg)
+  brightness(250%) contrast(300%);
+}
+.colorLikeCat:hover{
+  filter: invert(62%) sepia(87%) saturate(5000%) hue-rotate(161deg)
+  brightness(250%) contrast(300%);
+}
 .sharePost {
   display: flex;
   width: 91px;

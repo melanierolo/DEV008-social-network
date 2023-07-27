@@ -163,9 +163,11 @@ export const Feed = (onNavigate) => {
       console.log("buttons", buttonsLike);
 
       buttonsLike.forEach((button) => {
+        console.log(button.querySelector(".likeCat"));
+        const buttonLikeCat=button.querySelector(".likeCat");
         button.addEventListener("click", (event) => {
           const postId = event.target.getAttribute("data-id");
-
+          buttonLikeCat.classList.toggle("colorLikeCat");
           getPost(postId)
             .then((result) => {
               console.log(result.data());
