@@ -17,9 +17,9 @@ export const MyPostEdit = (name, textPost, photoUrl, postId) => {
       <div class="horizontal-line"></div>
       
       <div class="containerIcons">
-        <div class="containerLike">
-          <img class="likeCat" src="./assets/icons/CatHead.png"/>
-          <p class="like">Me gusta</p>
+        <div class="containerLike" data-id="${postId}">
+          <img  data-id="${postId}"class="likeCat" src="./assets/icons/CatHead.png"/>
+          <p  data-id="${postId}"class="like">Me gusta</p>
         </div>
         
         <div class="sharePost">

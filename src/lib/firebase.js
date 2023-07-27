@@ -13,6 +13,9 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  getDoc,
+  arrayRemove,
+  arrayUnion,
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -51,11 +54,11 @@ const queryOrdenByDate = query(colRef, orderBy("user_createdAt", "desc"));
 export const queryPosts = async () => getDocs(queryOrdenByDate);
 
 // adding documents
-export const addPost = (img, like, name, post, userId) => {
+export const addPost = (img, name, post, userId) => {
   const postDate = Timestamp.now();
   return addDoc(colRef, {
     user_img: img,
-    user_likes: like,
+    user_likes: [],
     user_name: name,
     user_post: post,
     user_id: userId,
@@ -69,4 +72,25 @@ export const deletePost = (id) => deleteDoc(doc(db, "posts", id));
 // Update document
 export const updatePost = (id, newPost) => {
   updateDoc(doc(db, "posts", id), { user_post: newPost });
+};
+
+/* -----------------------Like-------------------- */
+// get post
+export const getPost = (id) => {
+  const postRef = doc(db, "posts", id);
+  return getDoc(postRef);
+};
+
+// add like
+export const addLike = (postId, userId) => {
+  const postRef = doc(db, "posts", postId);
+
+  return updateDoc(postRef, { user_likes: arrayUnion(userId) });
+};
+
+// remove like
+export const removeLike = (postId, userId) => {
+  const postRef = doc(db, "posts", postId);
+
+  return updateDoc(postRef, { user_likes: arrayRemove(userId) });
 };
