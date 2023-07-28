@@ -1,7 +1,7 @@
-export const MyPosts = (name, textPost, photoUrl, postId,isUserIdInArray ) => {
+export const MyPosts = (name, textPost, photoUrl, postId,isUserIdInArray, numberOfLikes) => {
   const myPostsDiv = document.createElement("div");
   const isLiked = (isUserIdInArray === true) ? "colorLikeCat": "";
-
+  const numberLikes = (numberOfLikes === 0) ? "" : numberOfLikes;
   const post = `<div class="containerPost">
       <div class="containerUser">
         <img class="userBlack"src="${photoUrl}" alt="user Black"/>
@@ -15,7 +15,7 @@ export const MyPosts = (name, textPost, photoUrl, postId,isUserIdInArray ) => {
       <div class="containerIcons">
         <div data-id="${postId}" class="containerLike">
           <img data-id="${postId}" class="likeCat ${isLiked}" src="./assets/icons/CatHead.png"/>
-          <p data-id="${postId}" class="like">Me gusta</p>
+          <p data-id="${postId}" class="like">Me gusta ${numberLikes} </p>
         </div>
         
         <div class="sharePost">

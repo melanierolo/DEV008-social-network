@@ -67,6 +67,7 @@ export const Feed = (onNavigate) => {
       posts.forEach((post) => {
         const arrayLikes=post.user_likes;
         const isUserIdInArray = arrayLikes.includes(userId);
+        const numberOfLikes= arrayLikes.length;
         console.log("post",post.user_likes);
         let myPostsHtml;
         if (post.user_id === userId) {
@@ -76,6 +77,7 @@ export const Feed = (onNavigate) => {
             post.user_img,
             post.id,
             isUserIdInArray,
+            numberOfLikes,
 
           );
         } else {
@@ -85,6 +87,7 @@ export const Feed = (onNavigate) => {
             post.user_img,
             post.id,
             isUserIdInArray,
+            numberOfLikes,
           );
         }
         allPostsHtml.appendChild(myPostsHtml);
@@ -169,17 +172,14 @@ export const Feed = (onNavigate) => {
       console.log("buttons", buttonsLike);
 
       buttonsLike.forEach((button) => {
-        console.log(button.querySelector(".likeCat"));
-        const buttonLikeCat=button.querySelector(".likeCat");
-        button.addEventListener("click", (event) => {
+        const buttonLikeCat = button.querySelector(".likeCat");
+          button.addEventListener("click", (event) => {
           const postId = event.target.getAttribute("data-id");
           buttonLikeCat.classList.toggle("colorLikeCat");
+          button.childNodes[1].innerHTML = "cambiar texto";
           getPost(postId)
             .then((result) => {
-              console.log(result.data());
               const arrayLikes = result.data().user_likes;
-              console.log("arrayLikes", arrayLikes, Array.isArray(arrayLikes));
-              console.log("userId", userId);
               const isUserIdInArray = arrayLikes.includes(userId);
               if (isUserIdInArray) {
                 removeLike(postId, userId);
@@ -188,7 +188,7 @@ export const Feed = (onNavigate) => {
               }
             })
             .catch((error) => console.log(error));
-          console.log("click like", event.target.getAttribute("data-id"));
+          onNavigate("/feed");
         });
       });
     })
