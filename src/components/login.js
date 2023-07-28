@@ -1,8 +1,8 @@
 // Funciones para la interacción con el DOM del login y la vista(create element o template string)
 
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../lib/firebase";
-import { loginWithEmail } from "../lib/firebase";
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth, loginWithGoogle } from '../lib/firebase';
+import { loginWithEmail } from '../lib/firebase';
 
 export const Login = (onNavigate) => {
   // Template Strings
@@ -36,21 +36,21 @@ export const Login = (onNavigate) => {
                     </div>
                   </section>`;
 
-  const loginDiv = document.createElement("div");
-  loginDiv.classList.add("container");
+  const loginDiv = document.createElement('div');
+  loginDiv.classList.add('container');
   loginDiv.innerHTML = login;
 
-  const linkRegister = loginDiv.querySelector("#linkRegister");
-  linkRegister.addEventListener("click", () => onNavigate("/register"));
+  const linkRegister = loginDiv.querySelector('#linkRegister');
+  linkRegister.addEventListener('click', () => onNavigate('/register'));
 
-  const loginFormId = loginDiv.querySelector("#loginForm");
+  const loginFormId = loginDiv.querySelector('#loginForm');
 
-  loginFormId.addEventListener("submit", async (e) => {
+  loginFormId.addEventListener('submit', async (e) => {
     e.preventDefault();
     const userEmail = loginFormId.userEmail.value;
     const password = loginFormId.userPassword.value;
     let userRegister = {};
-    localStorage.removeItem("userRegister");
+    localStorage.removeItem('userRegister');
     loginWithEmail(userEmail, password)
       .then((response) => {
         const userCredentials = response;
@@ -63,35 +63,35 @@ export const Login = (onNavigate) => {
         }
       })
       .catch((error) => {
-        if (error.code === "auth/wrong-password") {
-          alert("Contreseña incorrecta");
-        } else if (error.code === "auth/user-not-found") {
-          alert("Usuario no encontrado");
+        if (error.code === 'auth/wrong-password') {
+          alert('Contreseña incorrecta');
+        } else if (error.code === 'auth/user-not-found') {
+          alert('Usuario no encontrado');
         } else {
-          alert(error.message, "error");
+          alert(error.message, 'error');
         }
       });
   });
   // -------Login Google-------
-  const googleButton = loginDiv.querySelector("#loginGoogle");
-  googleButton.addEventListener("click", async () => {
-    const provider = new GoogleAuthProvider();
+  const googleButton = loginDiv.querySelector('#loginGoogle');
+  googleButton.addEventListener('click', () => {
     let userRegister = {};
-    localStorage.removeItem("userRegister");
-    try {
-      const googleCredentials = await signInWithPopup(auth, provider);
-
-      if (googleCredentials.operationType === "signIn") {
-        userRegister.email = googleCredentials.user.email;
-        userRegister.id = googleCredentials.user.uid;
-        userRegister.photoUrl = googleCredentials.user.photoURL;
-        userRegister.name = googleCredentials.user.displayName;
-        localStorage.setItem("userRegister", JSON.stringify(userRegister));
-        onNavigate("/feed");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    localStorage.removeItem('userRegister');
+    loginWithGoogle()
+      .then((resolve) => {
+        const googleCredentials = resolve;
+        if (googleCredentials.operationType === 'signIn') {
+          userRegister.email = googleCredentials.user.email;
+          userRegister.id = googleCredentials.user.uid;
+          userRegister.photoUrl = googleCredentials.user.photoURL;
+          userRegister.name = googleCredentials.user.displayName;
+          localStorage.setItem('userRegister', JSON.stringify(userRegister));
+          onNavigate('/feed');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
 
   return loginDiv;
