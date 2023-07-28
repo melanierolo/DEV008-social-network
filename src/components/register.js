@@ -86,8 +86,8 @@ export const Register = (onNavigate) => {
 
   registerFormId.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const userEmail = registerFormId['userEmail'].value;
-    const userPassword = registerFormId['userPassword'].value;
+    const userEmail = registerFormId.userEmail.value;
+    const userPassword = registerFormId.userPassword.value;
 
     try {
       const userCredentials = await createUserWithEmailAndPassword(

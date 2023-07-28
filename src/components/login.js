@@ -50,8 +50,8 @@ export const Login = (onNavigate) => {
 
   loginFormId.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const userEmail = loginFormId['userEmail'].value;
-    const password = loginFormId['userPassword'].value;
+    const userEmail = loginFormId.userEmail.value;
+    const password = loginFormId.userPassword.value;
     let userRegister = {};
     localStorage.removeItem('userRegister');
     try {
@@ -61,9 +61,9 @@ export const Login = (onNavigate) => {
         password
       );
       if (userCredentials.operationType === 'signIn') {
-        userRegister['email'] = userCredentials.user.email;
-        userRegister['id'] = userCredentials.user.uid;
-        userRegister['photoUrl'] = './assets/icons/Account circle.svg';
+        userRegister.email = userCredentials.user.email;
+        userRegister.id = userCredentials.user.uid;
+        userRegister.photoUrl = './assets/icons/Account circle.svg';
         localStorage.setItem('userRegister', JSON.stringify(userRegister));
         onNavigate('/feed');
       }
@@ -87,10 +87,10 @@ export const Login = (onNavigate) => {
       const googleCredentials = await signInWithPopup(auth, provider);
 
       if (googleCredentials.operationType === 'signIn') {
-        userRegister['email'] = googleCredentials.user.email;
-        userRegister['id'] = googleCredentials.user.uid;
-        userRegister['photoUrl'] = googleCredentials.user.photoURL;
-        userRegister['name'] = googleCredentials.user.displayName;
+        userRegister.email = googleCredentials.user.email;
+        userRegister.id = googleCredentials.user.uid;
+        userRegister.photoUrl = googleCredentials.user.photoURL;
+        userRegister.name = googleCredentials.user.displayName;
         localStorage.setItem('userRegister', JSON.stringify(userRegister));
         onNavigate('/feed');
       }
