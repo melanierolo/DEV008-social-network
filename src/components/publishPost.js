@@ -1,5 +1,5 @@
 export const PublishPost = () => {
-  const divPublishPost = document.createElement("div");
+  const divPublishPost = document.createElement('div');
   const publishPost = `<div class="cointainerPublishPost">
                         <div class="containerUserText">
                             <img class="circleUser"src="./assets/icons/Account circle.svg" alt="logo CatsSociety" />
