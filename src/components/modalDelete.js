@@ -1,9 +1,9 @@
 export const ModalDelete = () => {
-    // The Modal
-    const myModalDeleteDiv = document.createElement("div");
-    myModalDeleteDiv.classList.add("modal");
-    myModalDeleteDiv.setAttribute("id", "myModal");
-    const modal = `
+  // The Modal
+  const myModalDeleteDiv = document.createElement('div');
+  myModalDeleteDiv.classList.add('modal');
+  myModalDeleteDiv.setAttribute('id', 'myModal');
+  const modal = `
       <!-- Modal content -->
       <div class="modal-content-delete">
         <div class="modal-delete-header">
@@ -17,6 +17,6 @@ export const ModalDelete = () => {
           <button id="btn-confirm" class="btn btn--primary btn-save">Confirmar</button>
         </div>
       </div>`;
-    myModalDeleteDiv.innerHTML = modal;
-    return myModalDeleteDiv;
-  };
+  myModalDeleteDiv.innerHTML = modal;
+  return myModalDeleteDiv;
+};

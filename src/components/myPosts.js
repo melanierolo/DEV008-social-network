@@ -1,12 +1,19 @@
-export const MyPosts = (name, textPost, photoUrl, postId,isUserIdInArray, numberOfLikes) => {
-  const myPostsDiv = document.createElement("div");
-  const isLiked = (isUserIdInArray === true) ? "colorLikeCat": "";
-  const numberLikes = (numberOfLikes === 0) ? "" : numberOfLikes;
+export const MyPosts = (
+  name,
+  textPost,
+  photoUrl,
+  postId,
+  isUserIdInArray,
+  numberOfLikes
+) => {
+  const myPostsDiv = document.createElement('div');
+  const isLiked = isUserIdInArray === true ? 'colorLikeCat' : '';
+  const numberLikes = numberOfLikes === 0 ? '' : numberOfLikes;
   const post = `<div class="containerPost">
       <div class="containerUser">
         <img class="userBlack"src="${photoUrl}" alt="user Black"/>
         <p class="names" >${name}</p>
-     </div>
+      </div>
       
       <p class="feedPost" >${textPost}</p>
       
@@ -23,7 +30,7 @@ export const MyPosts = (name, textPost, photoUrl, postId,isUserIdInArray, number
           <p class="shareText">Compartir</p>
         </div>
       </div>
- </div>`;
+  </div>`;
   myPostsDiv.innerHTML = post;
   return myPostsDiv;
 };

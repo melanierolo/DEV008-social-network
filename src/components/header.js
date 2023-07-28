@@ -1,9 +1,10 @@
-import { signOut } from "firebase/auth";
-import { auth } from "../lib/firebase.js";
+import { signOut } from 'firebase/auth';
+import { auth } from '../lib/firebase.js';
 
 export function Header(onNavigate) {
   // Template String
-  const logoHeader = `<img class="logoHeader__img" src="./assets/images/catsSociety--logo.png" alt="" />`;
+  const logoHeader = `
+                      <img class="logoHeader__img" src="./assets/images/catsSociety--logo.png" alt="logo"/>`;
   const menuProfile = `<ul class="menuProfile">
                         <li class="menuItemProfile"><img class="menuProfile__img"src="./assets/icons/userIcon.png" alt="userIcon" /></li>
                         <li class="menuItemProfile"><a id="userName">Nombre de usuario</a></li>
@@ -52,70 +53,68 @@ export function Header(onNavigate) {
                           <nav class="header__menuProfile">${menuProfile}</nav>`;
 
   // DOM
-  const headerHtml = document.createElement("div");
-  headerHtml.classList.add("header");
+  const headerHtml = document.createElement('div');
+  headerHtml.classList.add('header');
   headerHtml.innerHTML = headerTemplate;
 
-  const myPosts = headerHtml.querySelector("#myPosts");
-  const feeds = headerHtml.querySelector("#feeds");
-  const logOut = headerHtml.querySelector("#logOut");
+  const myPosts = headerHtml.querySelector('#myPosts');
+  const feeds = headerHtml.querySelector('#feeds');
+  const logOut = headerHtml.querySelector('#logOut');
 
-  myPosts.addEventListener("click", () => {
-    onNavigate("/myPosts");
+  myPosts.addEventListener('click', () => {
+    onNavigate('/myPosts');
   });
 
-  feeds.addEventListener("click", () => {
-    onNavigate("/feed");
+  feeds.addEventListener('click', () => {
+    onNavigate('/feed');
   });
-  logOut.addEventListener("click", async () => {
+  logOut.addEventListener('click', async () => {
     await signOut(auth);
-    onNavigate("/ ");
-    console.log(signOut(auth));
-    console.log("user signed out");
+    onNavigate('/');
   });
 
   // Menu CSS - Profile
 
-  const menuItemsProfile = headerHtml.querySelectorAll(".menuItemProfile");
-  const hamburgerButton = headerHtml.querySelector(".hamburger");
-  const menuProfileHtml = headerHtml.querySelector(".menuProfile");
-  const closeIcon = headerHtml.querySelector(".closeIcon");
+  const menuItemsProfile = headerHtml.querySelectorAll('.menuItemProfile');
+  const hamburgerButton = headerHtml.querySelector('.hamburger');
+  const menuProfileHtml = headerHtml.querySelector('.menuProfile');
+  const closeIcon = headerHtml.querySelector('.closeIcon');
 
-  hamburgerButton.addEventListener("click", () => {
-    if (menuProfileHtml.classList.contains("showMenu")) {
-      menuProfileHtml.classList.remove("showMenu");
-      closeIcon.style.display = "none";
+  hamburgerButton.addEventListener('click', () => {
+    if (menuProfileHtml.classList.contains('showMenu')) {
+      menuProfileHtml.classList.remove('showMenu');
+      closeIcon.style.display = 'none';
     } else {
-      menuProfileHtml.classList.add("showMenu");
-      closeIcon.style.display = "block";
+      menuProfileHtml.classList.add('showMenu');
+      closeIcon.style.display = 'block';
     }
   });
 
   menuItemsProfile.forEach((menuItem) => {
-    menuItem.addEventListener("click", () => {
-      console.log("hiciste click");
+    menuItem.addEventListener('click', () => {
+      console.log('hiciste click');
     });
   });
 
   // Menu CSS - Topics
-  const menuItemsTopics = headerHtml.querySelectorAll(".menuItemTopics");
-  const hamburgerButtonTopic = headerHtml.querySelector(".hamburgerTopic");
-  const menuTopicsHtml = headerHtml.querySelector(".menuTopics");
-  const closeIconTopic = headerHtml.querySelector(".closeIconTopic");
+  const menuItemsTopics = headerHtml.querySelectorAll('.menuItemTopics');
+  const hamburgerButtonTopic = headerHtml.querySelector('.hamburgerTopic');
+  const menuTopicsHtml = headerHtml.querySelector('.menuTopics');
+  const closeIconTopic = headerHtml.querySelector('.closeIconTopic');
 
-  hamburgerButtonTopic.addEventListener("click", () => {
-    if (menuTopicsHtml.classList.contains("showMenuTopic")) {
-      menuTopicsHtml.classList.remove("showMenuTopic");
-      closeIconTopic.style.display = "none";
+  hamburgerButtonTopic.addEventListener('click', () => {
+    if (menuTopicsHtml.classList.contains('showMenuTopic')) {
+      menuTopicsHtml.classList.remove('showMenuTopic');
+      closeIconTopic.style.display = 'none';
     } else {
-      menuTopicsHtml.classList.add("showMenuTopic");
-      closeIconTopic.style.display = "block";
+      menuTopicsHtml.classList.add('showMenuTopic');
+      closeIconTopic.style.display = 'block';
     }
   });
 
   menuItemsTopics.forEach((menuItem) => {
-    menuItem.addEventListener("click", () => {
-      console.log("hiciste click");
+    menuItem.addEventListener('click', () => {
+      console.log('hiciste click');
     });
   });
 

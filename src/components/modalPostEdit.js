@@ -1,8 +1,8 @@
 export const ModalPostEdit = () => {
   // The Modal
-  const myModalPostDiv = document.createElement("div");
-  myModalPostDiv.classList.add("modal");
-  myModalPostDiv.setAttribute("id", "myModal");
+  const myModalPostDiv = document.createElement('div');
+  myModalPostDiv.classList.add('modal');
+  myModalPostDiv.setAttribute('id', 'myModal');
   const modal = `
     <!-- Modal content -->
     <div class="modal-content">
