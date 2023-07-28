@@ -65,20 +65,26 @@ export const Feed = (onNavigate) => {
 
       // Show all Data in HTML
       posts.forEach((post) => {
+        const arrayLikes=post.user_likes;
+        const isUserIdInArray = arrayLikes.includes(userId);
+        console.log("post",post.user_likes);
         let myPostsHtml;
         if (post.user_id === userId) {
           myPostsHtml = MyPostEdit(
             post.user_name,
             post.user_post,
             post.user_img,
-            post.id
+            post.id,
+            isUserIdInArray,
+
           );
         } else {
           myPostsHtml = MyPosts(
             post.user_name,
             post.user_post,
             post.user_img,
-            post.id
+            post.id,
+            isUserIdInArray,
           );
         }
         allPostsHtml.appendChild(myPostsHtml);

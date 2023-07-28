@@ -1,5 +1,6 @@
-export const MyPostEdit = (name, textPost, photoUrl, postId) => {
+export const MyPostEdit = (name, textPost, photoUrl, postId, isUserIdInArray ) => {
   const myPostsDiv = document.createElement("div");
+  const isLiked = (isUserIdInArray === true) ? "colorLikeCat": "";
 
   const post = `<div class="containerPost">
       <div class="containerUser">
@@ -18,7 +19,7 @@ export const MyPostEdit = (name, textPost, photoUrl, postId) => {
       
       <div class="containerIcons">
         <div class="containerLike" data-id="${postId}">
-          <img  data-id="${postId}"class="likeCat" src="./assets/icons/CatHead.png"/>
+          <img  data-id="${postId}"class="likeCat ${isLiked}" src="./assets/icons/CatHead.png"/>
           <p  data-id="${postId}"class="like">Me gusta</p>
         </div>
         
