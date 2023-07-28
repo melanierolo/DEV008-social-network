@@ -6,7 +6,6 @@ import {
   getFirestore,
   getDocs,
   addDoc,
-  onSnapshot,
   Timestamp,
   orderBy,
   query,
@@ -17,7 +16,6 @@ import {
   arrayRemove,
   arrayUnion,
 } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -35,7 +33,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-console.log(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);

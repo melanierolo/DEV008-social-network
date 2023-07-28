@@ -1,14 +1,18 @@
 import { Header } from './header.js';
 import { PublishPost } from './publishPost.js';
-import { addPost } from '../lib/firebase.js';
-import { queryPosts } from '../lib/firebase.js';
+import {
+  addPost,
+  queryPosts,
+  deletePost,
+  updatePost,
+  getPost,
+  removeLike,
+  addLike,
+} from '../lib/firebase.js';
 import { MyPosts } from './myPosts.js';
 import { MyPostEdit } from './myPostEdit.js';
-import { deletePost } from '../lib/firebase.js';
 import { ModalPostEdit } from './modalPostEdit.js';
-import { updatePost } from '../lib/firebase.js';
 import { ModalDelete } from './modalDelete.js';
-import { getPost, removeLike, addLike } from '../lib/firebase.js';
 
 export const Feed = (onNavigate) => {
   // Parent
@@ -31,20 +35,13 @@ export const Feed = (onNavigate) => {
 
   buttonPublish.addEventListener('click', () => {
     const getUserRegister = JSON.parse(localStorage.getItem('userRegister'));
-    console.log('sin json.parse', localStorage.getItem('userRegister'));
-    console.log(
-      'con json.parse',
-      JSON.parse(localStorage.getItem('userRegister'))
-    );
     const userName = getUserRegister.email;
-    const likes = 8;
     const img = getUserRegister.photoUrl;
     const textPublish = inputTextPublish.value;
     const userId = JSON.parse(localStorage.getItem('userRegister')).id;
 
-    console.log('hice click', textPublish);
     addPost(img, userName, textPublish, userId)
-      .then((result) => {
+      .then(() => {
         inputTextPublish.value = '';
         onNavigate('/feed');
       })
@@ -55,7 +52,7 @@ export const Feed = (onNavigate) => {
   allPostsHtml.classList.add('postsContainer');
   feedDiv.appendChild(allPostsHtml);
 
-  let posts = [];
+  const posts = [];
   queryPosts()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
@@ -68,8 +65,8 @@ export const Feed = (onNavigate) => {
         const arrayLikes = post.user_likes;
         const isUserIdInArray = arrayLikes.includes(userId);
         const numberOfLikes = arrayLikes.length;
-        console.log('post', post.user_likes);
         let myPostsHtml;
+
         if (post.user_id === userId) {
           myPostsHtml = MyPostEdit(
             post.user_name,
@@ -103,16 +100,23 @@ export const Feed = (onNavigate) => {
         });
       });
 
-      const modalButtosnCancel = modalPostDelete.querySelectorAll('.close');
+      const modalButtosnClose = modalPostDelete.querySelectorAll('.close');
+      modalButtosnClose.forEach((button) => {
+        button.addEventListener('click', () => {
+          modalPostDelete.style.display = 'none';
+        });
+      });
+
+      const modalButtosnCancel =
+        modalPostDelete.querySelectorAll('.close-delete');
       modalButtosnCancel.forEach((button) => {
-        button.addEventListener('click', ({ target: { dataset } }) => {
-          console.log('click edit', dataset.id);
+        button.addEventListener('click', () => {
           modalPostDelete.style.display = 'none';
         });
       });
 
       const modalButtosnConfirm = modalPostDelete.querySelector('#btn-confirm');
-      console.log('----', modalButtosnConfirm);
+
       modalButtosnConfirm.addEventListener('click', () => {
         console.log('se hizo click :)');
         // get id of the modalDelete
@@ -129,7 +133,6 @@ export const Feed = (onNavigate) => {
 
       buttonsEdit.forEach((button) => {
         button.addEventListener('click', ({ target: { dataset } }) => {
-          console.log('click edit', dataset.id);
           modalPostEdit.style.display = 'block';
           // add text from post on the modal
           modalPostEdit.querySelector('#modal-text').value =
@@ -144,7 +147,6 @@ export const Feed = (onNavigate) => {
         modalPostEdit.querySelector('#btn-modal-cancel');
 
       cancelButtonModal.addEventListener('click', () => {
-        console.log('click en close');
         modalPostEdit.style.display = 'none';
       });
 
@@ -166,16 +168,15 @@ export const Feed = (onNavigate) => {
       });
 
       // --------------- Likes ---------------
-      //
       const buttonsLike = feedDiv.querySelectorAll('.containerLike');
-      console.log('buttons', buttonsLike);
 
       buttonsLike.forEach((button) => {
         const buttonLikeCat = button.querySelector('.likeCat');
+
         button.addEventListener('click', (event) => {
           const postId = event.target.getAttribute('data-id');
           buttonLikeCat.classList.toggle('colorLikeCat');
-          button.childNodes[1].innerHTML = 'cambiar texto';
+
           getPost(postId)
             .then((result) => {
               const arrayLikes = result.data().user_likes;
@@ -187,6 +188,7 @@ export const Feed = (onNavigate) => {
               }
             })
             .catch((error) => console.log(error));
+          // show current like
           onNavigate('/feed');
         });
       });

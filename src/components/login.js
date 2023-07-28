@@ -6,10 +6,9 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import { auth } from '../lib/firebase';
-import { async } from 'regenerator-runtime';
 
 export const Login = (onNavigate) => {
-  //Template Strings
+  // Template Strings
   const loginLogo = `<div class="loginLogo">
                         <img class="loginLogo__img" src="./assets/images/catsSociety--logo.png" alt="logo CatsSociety" />
                         <h2 class="loginLogo__title">CatsSociety</h2>
@@ -48,13 +47,11 @@ export const Login = (onNavigate) => {
   linkRegister.addEventListener('click', () => onNavigate('/register'));
 
   const loginFormId = loginDiv.querySelector('#loginForm');
-  console.log(loginFormId);
+
   loginFormId.addEventListener('submit', async (e) => {
-    console.log('miau');
     e.preventDefault();
     const userEmail = loginFormId['userEmail'].value;
     const password = loginFormId['userPassword'].value;
-    console.log(userEmail, password);
     let userRegister = {};
     localStorage.removeItem('userRegister');
     try {
@@ -64,15 +61,12 @@ export const Login = (onNavigate) => {
         password
       );
       if (userCredentials.operationType === 'signIn') {
-        console.log('user-data', userCredentials);
         userRegister['email'] = userCredentials.user.email;
         userRegister['id'] = userCredentials.user.uid;
         userRegister['photoUrl'] = './assets/icons/Account circle.svg';
         localStorage.setItem('userRegister', JSON.stringify(userRegister));
-        console.log(userRegister);
         onNavigate('/feed');
       }
-      console.log(userCredentials);
     } catch (error) {
       if (error.code === 'auth/wrong-password') {
         alert('Contreseña incorrecta');
@@ -91,16 +85,13 @@ export const Login = (onNavigate) => {
     localStorage.removeItem('userRegister');
     try {
       const googleCredentials = await signInWithPopup(auth, provider);
-      console.log(googleCredentials);
 
       if (googleCredentials.operationType === 'signIn') {
-        console.log('user-data', googleCredentials);
         userRegister['email'] = googleCredentials.user.email;
         userRegister['id'] = googleCredentials.user.uid;
         userRegister['photoUrl'] = googleCredentials.user.photoURL;
         userRegister['name'] = googleCredentials.user.displayName;
         localStorage.setItem('userRegister', JSON.stringify(userRegister));
-        console.log(userRegister);
         onNavigate('/feed');
       }
     } catch (error) {

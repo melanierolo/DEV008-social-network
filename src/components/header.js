@@ -3,7 +3,8 @@ import { auth } from '../lib/firebase.js';
 
 export function Header(onNavigate) {
   // Template String
-  const logoHeader = `<img class="logoHeader__img" src="./assets/images/catsSociety--logo.png" alt="" />`;
+  const logoHeader = `
+                      <img class="logoHeader__img" src="./assets/images/catsSociety--logo.png" alt="logo"/>`;
   const menuProfile = `<ul class="menuProfile">
                         <li class="menuItemProfile"><img class="menuProfile__img"src="./assets/icons/userIcon.png" alt="userIcon" /></li>
                         <li class="menuItemProfile"><a id="userName">Nombre de usuario</a></li>
@@ -69,9 +70,7 @@ export function Header(onNavigate) {
   });
   logOut.addEventListener('click', async () => {
     await signOut(auth);
-    onNavigate('/ ');
-    console.log(signOut(auth));
-    console.log('user signed out');
+    onNavigate('/');
   });
 
   // Menu CSS - Profile

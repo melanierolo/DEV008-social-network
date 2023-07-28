@@ -4,15 +4,6 @@ import { auth } from '../lib/firebase.js';
 // Interacción con el DOM de registro
 
 export const Register = (onNavigate) => {
-  /*const registerdiv = document.createElement("div");
-  registerdiv.textContent = "Bienvenido al registro";
-  const buttonLogin = document.createElement("button");
-
-  buttonLogin.textContent = "Regresar al Log In";
-  buttonLogin.addEventListener("click", () => onNavigate("/"));
-
-  registerdiv.appendChild(buttonLogin);*/
-
   const registerLogo = `<div class="registerLogo">
                           <img class="registerLogo__img" src="./assets/images/catsSociety--logo.png" alt="logo CatsSociety" />
                           <p class="registerLogo__title">CatsSociety</p>
@@ -89,22 +80,14 @@ export const Register = (onNavigate) => {
 
   const linkLogin = registerDiv.querySelector('#linkLogin');
   linkLogin.addEventListener('click', () => onNavigate('/'));
-  /*const buttonRegister = registerDiv.querySelector("#btnRegister");
-  buttonRegister.addEventListener("click", () => {
-    onNavigate("/register");
-    console.log("Bienvenido a la sociedad de los gatos");
-  });*/
 
   // Form Register
   const registerFormId = registerDiv.querySelector('#registerFormId');
-  console.log('ver form:', registerFormId);
 
   registerFormId.addEventListener('submit', async (e) => {
     e.preventDefault();
     const userEmail = registerFormId['userEmail'].value;
     const userPassword = registerFormId['userPassword'].value;
-
-    console.log(userEmail, userPassword);
 
     try {
       const userCredentials = await createUserWithEmailAndPassword(
@@ -124,9 +107,6 @@ export const Register = (onNavigate) => {
         alert('Algo ocurrio mal.');
       }
     }
-
-    //Reset the form here
-    //registerFormId.reset();
   });
 
   return registerDiv;

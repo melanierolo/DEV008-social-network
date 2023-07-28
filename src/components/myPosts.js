@@ -13,7 +13,7 @@ export const MyPosts = (
       <div class="containerUser">
         <img class="userBlack"src="${photoUrl}" alt="user Black"/>
         <p class="names" >${name}</p>
-     </div>
+      </div>
       
       <p class="feedPost" >${textPost}</p>
       
@@ -30,7 +30,7 @@ export const MyPosts = (
           <p class="shareText">Compartir</p>
         </div>
       </div>
- </div>`;
+  </div>`;
   myPostsDiv.innerHTML = post;
   return myPostsDiv;
 };

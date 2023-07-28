@@ -36,7 +36,7 @@ export const MyPostEdit = (
           <p class="shareText">Compartir</p>
         </div>
       </div>
- </div>`;
+  </div>`;
   myPostsDiv.innerHTML = post;
   return myPostsDiv;
 };
