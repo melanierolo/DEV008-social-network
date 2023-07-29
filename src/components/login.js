@@ -19,6 +19,7 @@ export const Login = (onNavigate) => {
                         <label class="loginForm__label marginBottom_4" for="userPassword">Contraseña:</label>
                         <input class="loginForm__input marginBottom_4" type="password" id="userPassword" name="userPassword" placeholder="Contraseña">
                         <div id="passError" class="error-container"></div>
+                        
                         <a class="loginForm__link loginForm__link--black marginBottom_16">¿Olvidaste la contraseña?</a>  
                         <input id="btnLogin" class="btn btn--primary marginBottom_8" type="submit" value="Iniciar Sesión">
                       </form>`;
@@ -49,39 +50,40 @@ export const Login = (onNavigate) => {
 
   // Validation functions
 
-  function showError(divInput, divError, error) {
+  function showError(divInput, divError, errorMessage) {
     divInput.style.border = '1px solid red';
     divError.innerHTML = `<img class="icon-error" src="./assets/icons/icon-error.svg">
-    <p class="error">El campo no puede estar vacio</p>`;
+    <p class="error">${errorMessage}</p>`;
   }
   function hideError(divInput, divError) {
     divInput.style.border = '1px solid hs1(246, 25% 77%)';
     divError.innerHTML = ``;
   }
-  function validateEmpty(valueInput, divInput, divError, nameInput) {
+  function validateEmpty(valueInput, divInput, divError, errorMessage) {
     let resulte;
     if (valueInput.length === 0) {
-      showError(divInput, divError, nameInput);
-      resulte = true;
+      showError(divInput, divError, errorMessage);
+      resulte = false;
     } else {
       hideError(divInput, divError);
-      resulte = false;
+      resulte = true;
     }
     return resulte;
   }
-  function validateEmail(valueInput, divInput, divError) {
-    let resulte;
+  function validateEmail(valueInput, divInput, divError, errorMessage) {
+    let result;
     const regExp =
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
-    console.log(regExp.test(valueInput));
-    if (regExp.test(valueInput) === true) {
+    const isEmailValid = regExp.test(valueInput);
+
+    if (isEmailValid) {
       hideError(divInput, divError);
-      resulte = true;
+      result = true;
     } else {
-      showError(divInput, divError);
-      resulte = false;
+      showError(divInput, divError, errorMessage);
+      result = false;
     }
-    return resulte;
+    return result;
   }
 
   // Validation
@@ -90,31 +92,33 @@ export const Login = (onNavigate) => {
   const emailAddressError = loginDiv.querySelector('#emailError');
   const passError = loginDiv.querySelector('#passError');
 
-  const loginFormId = loginDiv.querySelector('#loginForm');
+  const buttonLoginFormId = loginDiv.querySelector('#loginForm');
 
-  loginFormId.addEventListener('submit', (e) => {
+  buttonLoginFormId.addEventListener('submit', (e) => {
     e.preventDefault();
-    const userEmail = loginFormId.userEmail.value;
-    const password = loginFormId.userPassword.value;
+    const userEmail = buttonLoginFormId.userEmail.value;
+    const userPassword = buttonLoginFormId.userPassword.value;
     let userRegister = {};
     localStorage.removeItem('userRegister');
 
     // Input validation
-    const isEmailEmpty = validateEmpty(
-      userEmail,
-      emailAddress,
-      emailAddressError,
-      'Email'
-    );
-    const isPassEmpty = validateEmpty(password, pass, passError, 'Contraseña');
     const isEmailValidate = validateEmail(
       userEmail,
       emailAddress,
       emailAddressError,
+      'El email no es válido.'
     );
-console.log(("......."),isEmailEmpty, ("-------"),isEmailValidate, (".-.-."),isPassEmpty);
-    if (isEmailEmpty && isPassEmpty && isEmailValidate) {
-      loginWithEmail(userEmail, password)
+    console.log('email', isEmailValidate);
+    const isPassEmpty = validateEmpty(
+      userPassword,
+      pass,
+      passError,
+      'La contraseña está vacía.'
+    );
+    console.log('password', isPassEmpty);
+
+    if (isPassEmpty && isEmailValidate) {
+      loginWithEmail(userEmail, userPassword)
         .then((response) => {
           const userCredentials = response;
           if (userCredentials.operationType === 'signIn') {
