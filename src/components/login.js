@@ -60,15 +60,15 @@ export const Login = (onNavigate) => {
     divError.innerHTML = ``;
   }
   function validateEmpty(valueInput, divInput, divError, errorMessage) {
-    let resulte;
+    let result;
     if (valueInput.length === 0) {
       showError(divInput, divError, errorMessage);
-      resulte = false;
+      result = true;
     } else {
       hideError(divInput, divError);
-      resulte = true;
+      result = false;
     }
-    return resulte;
+    return result;
   }
   function validateEmail(valueInput, divInput, divError, errorMessage) {
     let result;
@@ -108,16 +108,14 @@ export const Login = (onNavigate) => {
       emailAddressError,
       'El email no es válido.'
     );
-    console.log('email', isEmailValidate);
     const isPassEmpty = validateEmpty(
       userPassword,
       pass,
       passError,
       'La contraseña está vacía.'
     );
-    console.log('password', isPassEmpty);
 
-    if (isPassEmpty && isEmailValidate) {
+    if (!isPassEmpty && isEmailValidate) {
       loginWithEmail(userEmail, userPassword)
         .then((response) => {
           const userCredentials = response;
