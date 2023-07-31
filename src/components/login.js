@@ -98,7 +98,7 @@ export const Login = (onNavigate) => {
     e.preventDefault();
     const userEmail = buttonLoginFormId.userEmail.value;
     const userPassword = buttonLoginFormId.userPassword.value;
-    let userRegister = {};
+    const userRegister = {};
     localStorage.removeItem('userRegister');
 
     // Input validation
@@ -141,7 +141,7 @@ export const Login = (onNavigate) => {
   // -------Login Google-------
   const googleButton = loginDiv.querySelector('#loginGoogle');
   googleButton.addEventListener('click', () => {
-    let userRegister = {};
+    const userRegister = {};
     localStorage.removeItem('userRegister');
     loginWithGoogle()
       .then((resolve) => {
