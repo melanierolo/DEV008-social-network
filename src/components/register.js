@@ -1,5 +1,4 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../lib/firebase.js';
+import { createUser } from '../lib/firebase.js';
 
 // Interacción con el DOM de registro
 
@@ -84,29 +83,27 @@ export const Register = (onNavigate) => {
   // Form Register
   const registerFormId = registerDiv.querySelector('#registerFormId');
 
-  registerFormId.addEventListener('submit', async (e) => {
+  registerFormId.addEventListener('submit', (e) => {
     e.preventDefault();
     const userEmail = registerFormId.userEmail.value;
     const userPassword = registerFormId.userPassword.value;
 
-    try {
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        userEmail,
-        userPassword
-      );
-      console.log(userCredentials);
-    } catch (error) {
-      if (error.code === 'auth/email-already-in-use') {
-        alert('El correo está en uso.');
-      } else if (error.code === 'auth/invalid-email') {
-        alert('Correo inválido.');
-      } else if (error.code === 'auth/weak-password') {
-        alert('La contraseña es débil.');
-      } else if (error.code) {
-        alert('Algo ocurrio mal.');
-      }
-    }
+    createUser(userEmail, userPassword)
+      .then((resolve) => {
+        const userCredentials = resolve;
+        console.log(userCredentials);
+      })
+      .catch((error) => {
+        if (error.code === 'auth/email-already-in-use') {
+          alert('El correo está en uso.');
+        } else if (error.code === 'auth/invalid-email') {
+          alert('Correo inválido.');
+        } else if (error.code === 'auth/weak-password') {
+          alert('La contraseña es débil.');
+        } else if (error.code) {
+          alert('Algo ocurrio mal.');
+        }
+      });
   });
 
   return registerDiv;
