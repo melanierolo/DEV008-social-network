@@ -218,13 +218,17 @@ export const Register = (onNavigate) => {
         })
         .catch((error) => {
           if (error.code === 'auth/email-already-in-use') {
-            alert('El correo está en uso.');
+            showError(inputEmail, inputEmailError, 'El correo está en uso');
           } else if (error.code === 'auth/invalid-email') {
-            alert('Correo inválido.');
+            showError(inputEmail, inputEmailError, 'Correo inválido.');
           } else if (error.code === 'auth/weak-password') {
-            alert('La contraseña es débil.');
+            showError(
+              inputPassword,
+              inputPasswordError,
+              'La contraseña es débil.'
+            );
           } else if (error.code) {
-            alert('Algo ocurrio mal.');
+            throw new Error('error', error.message, error.code);
           }
         });
     }
