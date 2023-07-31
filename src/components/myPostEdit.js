@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 export const MyPostEdit = (
   name,
   textPost,

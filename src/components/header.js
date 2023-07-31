@@ -91,9 +91,7 @@ export function Header(onNavigate) {
   });
 
   menuItemsProfile.forEach((menuItem) => {
-    menuItem.addEventListener('click', () => {
-      console.log('hiciste click');
-    });
+    menuItem.addEventListener('click', () => {});
   });
 
   // Menu CSS - Topics
@@ -113,9 +111,7 @@ export function Header(onNavigate) {
   });
 
   menuItemsTopics.forEach((menuItem) => {
-    menuItem.addEventListener('click', () => {
-      console.log('hiciste click');
-    });
+    menuItem.addEventListener('click', () => {});
   });
 
   return headerHtml;
