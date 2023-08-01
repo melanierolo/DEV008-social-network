@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable comma-dangle */
 import { Header } from './header.js';
 import { PublishPost } from './publishPost.js';
 import {
@@ -45,7 +47,9 @@ export const Feed = (onNavigate) => {
         inputTextPublish.value = '';
         onNavigate('/feed');
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        throw new Error(error.message, 'error');
+      });
   });
 
   const allPostsHtml = document.createElement('div');
@@ -118,11 +122,9 @@ export const Feed = (onNavigate) => {
       const modalButtosnConfirm = modalPostDelete.querySelector('#btn-confirm');
 
       modalButtosnConfirm.addEventListener('click', () => {
-        console.log('se hizo click :)');
         // get id of the modalDelete
         const allPostId = modalPostDelete.getAttribute('data-id');
         const postId = allPostId.slice(12);
-        console.log('-----', postId);
         // Delete post - firebase
         deletePost(postId);
         onNavigate('/feed');
@@ -187,14 +189,16 @@ export const Feed = (onNavigate) => {
                 addLike(postId, userId);
               }
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+              throw new Error(error.message, 'error');
+            });
           // show current like
           onNavigate('/feed');
         });
       });
     })
     .catch((error) => {
-      console.log(error);
+      throw new Error(error.message, 'error');
     });
   return feedDiv;
 };

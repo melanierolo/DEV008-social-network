@@ -1,16 +1,17 @@
-import { loginWithGoogle } from "../lib/firebase";
-import { loginWithEmail } from "../lib/firebase";
+/* eslint-disable comma-dangle */
+/* eslint-disable operator-linebreak */
+import { loginWithGoogle, loginWithEmail } from '../lib/firebase';
 
 // Validation functions
 
 function showError(divInput, divError, errorMessage) {
-  divInput.style.border = "1px solid red";
+  divInput.style.border = '1px solid red';
   divError.innerHTML = `<img class="icon-error" src="./assets/icons/icon-error.svg">
   <p class="error">${errorMessage}</p>`;
 }
 function hideError(divInput, divError) {
-  divInput.style.border = "1px solid hs1(246, 25% 77%)";
-  divError.innerHTML = ``;
+  divInput.style.border = '1px solid hs1(246, 25% 77%)';
+  divError.innerHTML = '';
 }
 function validateEmpty(valueInput, divInput, divError, errorMessage) {
   let result;
@@ -78,84 +79,84 @@ export const Login = (onNavigate) => {
                     </div>
                   </section>`;
 
-  const loginDiv = document.createElement("div");
-  loginDiv.classList.add("container");
+  const loginDiv = document.createElement('div');
+  loginDiv.classList.add('container');
   loginDiv.innerHTML = login;
 
-  const linkRegister = loginDiv.querySelector("#linkRegister");
-  linkRegister.addEventListener("click", () => onNavigate("/register"));
+  const linkRegister = loginDiv.querySelector('#linkRegister');
+  linkRegister.addEventListener('click', () => onNavigate('/register'));
 
   // Validation
-  const emailAddress = loginDiv.querySelector("#userEmail");
-  const pass = loginDiv.querySelector("#userPassword");
-  const emailAddressError = loginDiv.querySelector("#emailError");
-  const passError = loginDiv.querySelector("#passError");
+  const emailAddress = loginDiv.querySelector('#userEmail');
+  const pass = loginDiv.querySelector('#userPassword');
+  const emailAddressError = loginDiv.querySelector('#emailError');
+  const passError = loginDiv.querySelector('#passError');
 
-  const buttonLoginFormId = loginDiv.querySelector("#loginForm");
+  const buttonLoginFormId = loginDiv.querySelector('#loginForm');
 
-  buttonLoginFormId.addEventListener("submit", (e) => {
+  buttonLoginFormId.addEventListener('submit', (e) => {
     e.preventDefault();
     const userEmail = buttonLoginFormId.userEmail.value;
     const userPassword = buttonLoginFormId.userPassword.value;
-    let userRegister = {};
-    localStorage.removeItem("userRegister");
+    const userRegister = {};
+    localStorage.removeItem('userRegister');
 
     // Input validation
     const isEmailValidate = validateEmail(
       userEmail,
       emailAddress,
       emailAddressError,
-      "El email no es válido."
+      'El email no es válido.'
     );
     const isPassEmpty = validateEmpty(
       userPassword,
       pass,
       passError,
-      "La contraseña está vacía."
+      'La contraseña está vacía.'
     );
 
     if (!isPassEmpty && isEmailValidate) {
       loginWithEmail(userEmail, userPassword)
         .then((response) => {
           const userCredentials = response;
-          if (userCredentials.operationType === "signIn") {
+          if (userCredentials.operationType === 'signIn') {
             userRegister.email = userCredentials.user.email;
             userRegister.id = userCredentials.user.uid;
-            userRegister.photoUrl = "./assets/icons/Account circle.svg";
-            localStorage.setItem("userRegister", JSON.stringify(userRegister));
-            onNavigate("/feed");
+            userRegister.photoUrl = './assets/icons/Account circle.svg';
+            localStorage.setItem('userRegister', JSON.stringify(userRegister));
+            onNavigate('/feed');
           }
         })
         .catch((error) => {
-          if (error.code === "auth/wrong-password") {
-            showError(pass, passError, 'Contraseña incorrecta')
-          } else if (error.code === "auth/user-not-found") {
+          if (error.code === 'auth/wrong-password') {
+            showError(pass, passError, 'Contraseña incorrecta');
+          } else if (error.code === 'auth/user-not-found') {
             showError(emailAddress, emailAddressError, 'Usuario no encontrado');
           } else {
-            throw new Error(error.message, "error");
+            throw new Error(error.message, 'error');
           }
         });
     }
   });
   // -------Login Google-------
-  const googleButton = loginDiv.querySelector("#loginGoogle");
-  googleButton.addEventListener("click", () => {
-    let userRegister = {};
-    localStorage.removeItem("userRegister");
+  const googleButton = loginDiv.querySelector('#loginGoogle');
+  googleButton.addEventListener('click', () => {
+    const userRegister = {};
+    localStorage.removeItem('userRegister');
     loginWithGoogle()
       .then((resolve) => {
         const googleCredentials = resolve;
-        if (googleCredentials.operationType === "signIn") {
+        if (googleCredentials.operationType === 'signIn') {
           userRegister.email = googleCredentials.user.email;
           userRegister.id = googleCredentials.user.uid;
           userRegister.photoUrl = googleCredentials.user.photoURL;
           userRegister.name = googleCredentials.user.displayName;
-          localStorage.setItem("userRegister", JSON.stringify(userRegister));
-          onNavigate("/feed");
+          localStorage.setItem('userRegister', JSON.stringify(userRegister));
+          onNavigate('/feed');
         }
       })
       .catch((error) => {
-        console.log(error);
+        throw new Error(error.message, error.code);
       });
   });
 

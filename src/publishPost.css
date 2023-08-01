@@ -48,9 +48,6 @@
   border: 0px solid;
 }
 
-.btnPublicar:hover {
-  background: #7642ab;
-}
 .containerUserText {
   display: flex;
   justify-content: space-between;
@@ -61,4 +58,8 @@
 .textAdd,
 .btnPublicar {
   cursor: pointer;
+}
+
+.btnPublicar:hover {
+  background: #7642ab;
 }

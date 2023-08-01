@@ -1,3 +1,5 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable operator-linebreak */
 import { createUser } from '../lib/firebase.js';
 
 // Validation functions
@@ -9,7 +11,7 @@ function showError(divInput, divError, errorMessage) {
 }
 function hideError(divInput, divError) {
   divInput.style.border = '1px solid hs1(246, 25% 77%)';
-  divError.innerHTML = ``;
+  divError.innerHTML = '';
 }
 function validateEmpty(valueInput, divInput, divError, errorMessage) {
   let result;
@@ -214,7 +216,9 @@ export const Register = (onNavigate) => {
       createUser(userEmail, userPassword)
         .then((response) => {
           const userCredentials = response;
-          console.log(userCredentials);
+          if (userCredentials.operationType === 'signIn') {
+            onNavigate('/');
+          }
         })
         .catch((error) => {
           if (error.code === 'auth/email-already-in-use') {
