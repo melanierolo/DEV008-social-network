@@ -20,7 +20,7 @@ import { Sidebar } from './sidebar.js';
 export const Feed = (onNavigate) => {
   // Parent
   const feedDiv = document.createElement('div');
-  feedDiv.classList.add('FeedContainer');
+  feedDiv.classList.add('feedContainer');
   const feedContentDiv = document.createElement('div');
   feedContentDiv.classList.add('feedContent');
   const publishPostAndPostDiv = document.createElement('div');

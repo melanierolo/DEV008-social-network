@@ -705,11 +705,43 @@ body {
 @media screen and (min-width: 480px) {
   .containerSidebar {
     display: block;
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
+  .sidebarTopics {
+    position: fixed;
+    width: 200px;
+    height: auto;
+    margin: 0 25px;
+  }
+
+  .sidebarItemTopics a {
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebarIcon {
+    width: 39px;
+    height: 48px;
+    margin-right: 12px;
+  }
+
+  .sidebarItemTopics {
+    display: block;
+    margin: 1rem;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 auto;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
   .feedContent {
     display: grid;
     grid-template-columns: 250px auto;
     grid-gap: 10px;
-    padding: 10px;
   }
 }
