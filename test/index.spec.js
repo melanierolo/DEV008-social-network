@@ -1,3 +1,4 @@
+/* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable object-shorthand */
 /* eslint-disable comma-dangle */
 /* eslint-disable arrow-body-style */
@@ -15,7 +16,6 @@ function tick() {
 }
 
 describe('first Test for Register', () => {
-  let registerDiv;
   let registerFormId;
 
   let inputName;
@@ -32,33 +32,34 @@ describe('first Test for Register', () => {
   beforeEach(() => {
     document.body.appendChild(Register());
 
-    registerDiv = document.createElement('div');
-    registerDiv = document.querySelector('.container__r');
-    registerFormId = registerDiv.querySelector('#registerFormId');
+    registerFormId = document.querySelector('#registerFormId');
 
-    inputName = registerDiv.querySelector('#userName');
-    inputNameError = registerDiv.querySelector('#nameError');
-    inputEmail = registerDiv.querySelector('#userEmail');
-    inputEmailError = registerDiv.querySelector('#emailError');
-    inputPassword = registerDiv.querySelector('#userPassword');
-    inputPasswordError = registerDiv.querySelector('#passwordError');
-    inputConfirmPassword = registerDiv.querySelector('#confirmPassword');
-    inputConfirmPasswordError = registerDiv.querySelector(
-      '#confirmPasswordError'
-    );
+    inputName = document.querySelector('#userName');
+    inputNameError = document.querySelector('#nameError');
+    inputEmail = document.querySelector('#userEmail');
+    inputEmailError = document.querySelector('#emailError');
+    inputPassword = document.querySelector('#userPassword');
+    inputPasswordError = document.querySelector('#passwordError');
+    inputConfirmPassword = document.querySelector('#confirmPassword');
+    inputConfirmPasswordError = document.querySelector('#confirmPasswordError');
 
-    inputForSend = registerDiv.querySelector('#btnRegister');
+    inputForSend = document.querySelector('#btnRegister');
   });
 
-  /*it('Debería mostrar un error', async () => {
+  it('Debería mostrar un error', async () => {
+    inputEmail.value = 'email@verify.com';
+    inputPassword.value = '123456';
+
     createUser.mockImplementationOnce((email, password) => {
-      return Promise.reject(new Error('Firebase: Error (auth/invalid-email).'));
+      return Promise.reject({ code: 'auth/invalid-email' });
     });
 
     inputForSend.click();
     await tick();
-    expect(inputEmailError.innerHTML).toBe('Correo inválido.');
-  });*/
+    expect(inputEmailError.innerHTML)
+      .toBe(`<img class="icon-error" src="./assets/icons/icon-error.svg">
+    <p class="error">Correo inválido.</p>`);
+  });
 
   /* it('Debería mostrar exito', async () => {
     createUser.mockImplementationOnce((email, password) => {
