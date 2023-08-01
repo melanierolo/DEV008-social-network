@@ -15,22 +15,33 @@ import { MyPosts } from './myPosts.js';
 import { MyPostEdit } from './myPostEdit.js';
 import { ModalPostEdit } from './modalPostEdit.js';
 import { ModalDelete } from './modalDelete.js';
+import { Sidebar } from './sidebar.js';
 
 export const Feed = (onNavigate) => {
   // Parent
   const feedDiv = document.createElement('div');
   feedDiv.classList.add('FeedContainer');
+  const feedContentDiv = document.createElement('div');
+  feedContentDiv.classList.add('feedContent');
+  const publishPostAndPostDiv = document.createElement('div');
+  publishPostAndPostDiv.classList.add('publishPostAndPostContainer');
 
   // Childs
   const headerHtml = Header(onNavigate);
   const publishPostHtml = PublishPost();
   const modalPostEdit = ModalPostEdit();
   const modalPostDelete = ModalDelete();
+  const sidebarHtml = Sidebar();
 
   feedDiv.appendChild(headerHtml);
-  feedDiv.appendChild(publishPostHtml);
+  feedDiv.appendChild(feedContentDiv);
   feedDiv.appendChild(modalPostEdit);
   feedDiv.appendChild(modalPostDelete);
+
+  feedContentDiv.appendChild(sidebarHtml);
+  feedContentDiv.appendChild(publishPostAndPostDiv);
+
+  publishPostAndPostDiv.appendChild(publishPostHtml);
 
   const buttonPublish = publishPostHtml.querySelector('#buttonPublish');
   const inputTextPublish = publishPostHtml.querySelector('#inputTextPublish');
@@ -54,7 +65,7 @@ export const Feed = (onNavigate) => {
 
   const allPostsHtml = document.createElement('div');
   allPostsHtml.classList.add('postsContainer');
-  feedDiv.appendChild(allPostsHtml);
+  publishPostAndPostDiv.appendChild(allPostsHtml);
 
   const posts = [];
   queryPosts()
