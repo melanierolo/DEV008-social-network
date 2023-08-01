@@ -30,20 +30,20 @@ body {
   height: 100vh;
 }
 
-.error-container{
+.error-container {
   position: relative;
 }
 
-.icon-error{
+.icon-error {
   position: absolute;
   right: 15px;
   top: -35px;
 }
 
-.error{
-font-size: 12px;
-color: #FF7979;
-text-align: center;
+.error {
+  font-size: 12px;
+  color: #ff7979;
+  text-align: center;
 }
 /*-------------Page REGISTER-------------------*/
 
@@ -134,7 +134,7 @@ text-align: center;
   color: #1464f6;
 }
 
-.loginButtons{
+.loginButtons {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -206,10 +206,10 @@ text-align: center;
   }
   .sectionLeft {
     flex: 1;
-    background-color: #fff;
     /*login image*/
     background: url('./assets/images/gatito_login.png') transparent 15px 50%
       no-repeat;
+    background-color: #fff;
     background-size: 492px 800px;
     background-position: center;
   }
@@ -223,10 +223,10 @@ text-align: center;
     }
     .sectionLeftRegister {
       flex: 1;
-      background-color: #fff;
       /*login image*/
       background: url('./assets/images/gatito_registro.png') transparent 15px
         50% no-repeat;
+      background-color: #fff;
       background-size: 492px 600px;
       background-position: center;
     }
@@ -482,7 +482,7 @@ text-align: center;
 }
 
 .btn-save {
-  width: 90px;
+  width: 200px;
 }
 
 /* The Modal (Delete) */
@@ -504,7 +504,7 @@ text-align: center;
   font-weight: bolder;
   color: #726969;
 }
-.btn btn--primary btn-save {
+.btn .btn--primary {
   display: flex;
   height: 44px;
   padding: 14px 20px;
@@ -513,9 +513,7 @@ text-align: center;
   gap: 10px;
   flex: 1 0 0;
 }
-.btn-save {
-  width: 200px;
-}
+
 .close-delete {
   display: flex;
   height: 35.2px;
