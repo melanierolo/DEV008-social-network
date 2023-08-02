@@ -5,6 +5,8 @@ export const PublishPost = () => {
                         <div class="containerUserText">
                             <img class="circleUser"src="./assets/icons/Account circle.svg" alt="logo CatsSociety" />
                             <input id="inputTextPublish" type= "text" class="text" placeholder="¿Alguna gatoaventura que contar?"/>
+                            <div id="inputTextPublishError" class="error-container"></div>
+
                         </div>
                         <div class="photo-publish">
                             <img class="addPhoto" src="./assets/icons/img.png" alt="add photo" />
