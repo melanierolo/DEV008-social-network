@@ -11,6 +11,7 @@ function showError(divInput, divError, errorMessage) {
 }
 function hideError(divInput, divError) {
   divInput.style.border = '1px solid hs1(246, 25% 77%)';
+  divInput.style.border = '1px solid #00b4b8';
   divError.innerHTML = '';
 }
 function validateEmpty(valueInput, divInput, divError, errorMessage) {
