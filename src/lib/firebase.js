@@ -64,6 +64,12 @@ export const loginWithGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 
+/* --------Google (register)----- */
+export const registerWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  return signInWithPopup(auth, provider);
+};
+
 /* ------------------POSTS------------------------- */
 // init firebase app
 

@@ -1,0 +1,9 @@
+<svg width="68" height="34" viewBox="0 0 68 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="button-icon-more">
+<rect x="1" y="1" width="66" height="32" rx="16" fill="white"/>
+<circle id="Ellipse 35" cx="34.5" cy="16.5" r="2.5" fill="#5E5E5E"/>
+<circle id="Ellipse 36" cx="43.5" cy="16.5" r="2.5" fill="#5E5E5E"/>
+<circle id="Ellipse 37" cx="25.5" cy="16.5" r="2.5" fill="#5E5E5E"/>
+<rect x="1" y="1" width="66" height="32" rx="16" stroke="#00B4B8" stroke-width="2"/>
+</g>
+</svg>

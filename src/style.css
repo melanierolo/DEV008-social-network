@@ -612,6 +612,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
 }
+
 .userBlack {
   width: 30px;
   height: 30px;
@@ -696,6 +697,42 @@ body {
   cursor: pointer;
 }
 
+/*post edit*/
+
+.postEditNameAndImg {
+  display: flex;
+  align-items: center;
+}
+
+.containerUserEdit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.postEditButtons {
+  position: relative;
+}
+
+.postEditIconMore {
+  cursor: pointer;
+  position: absolute;
+  top: -20px;
+  left: -68px;
+}
+
+.postEditIconMore__ul {
+  position: relative;
+  display: absolute;
+  list-style: none;
+  width: 250px;
+}
+
+.main-menu:hover,
+nav.main-menu.expanded {
+  width: 250px;
+  overflow: visible;
+}
 /* -------------------------- Sidebar ----------------------- */
 .containerSidebar {
   display: none;
