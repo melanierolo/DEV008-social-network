@@ -19,7 +19,7 @@ export const MyPostEdit = (
         </div>
         <div class="postEditButtons">
           <img class="postEditIconMore" data-id="${postId}" src="./assets/icons/button-icon-more.svg" alt="button icon more">
-          <ul class="postEditIconMore__ul">
+          <ul class="postEditButtons__submenu hideSubmenu">
               <li><button id="btn-delete" class="btnDelete" data-id="${postId}">Eliminar</button></li>
               <li><button id="btn-edit" class="btnEdit" data-id="${postId}">Editar</button></li>
           </ul>

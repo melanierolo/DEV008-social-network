@@ -105,12 +105,24 @@ export const Feed = (onNavigate) => {
       });
 
       // --------------- Buttons of icon more ---------------
-      const iconsMore = feedDiv.querySelectorAll('.postEditIconMore');
+      const postsEditButtons = feedDiv.querySelectorAll('.postEditButtons');
 
-      iconsMore.forEach((iconMore) => {
-        iconMore.addEventListener('click', (event) => {
+      postsEditButtons.forEach((postEditButtons) => {
+        const submenu = postEditButtons.querySelector(
+          '.postEditButtons__submenu'
+        );
+        const buttonIconMore =
+          postEditButtons.querySelector('.postEditIconMore');
+        buttonIconMore.addEventListener('click', (event) => {
+          console.log(submenu);
           console.log(event.target);
-          console.log(event);
+          if (submenu.classList.contains('hideSubmenu')) {
+            submenu.classList.remove('hideSubmenu');
+            submenu.classList.add('showSubmenu');
+          } else {
+            submenu.classList.remove('showSubmenu');
+            submenu.classList.add('hideSubmenu');
+          }
         });
       });
 

@@ -716,16 +716,22 @@ body {
 
 .postEditIconMore {
   cursor: pointer;
-  position: absolute;
-  top: -20px;
-  left: -68px;
 }
 
-.postEditIconMore__ul {
+.postEditButtons__submenu {
   position: relative;
-  display: absolute;
+  top: 20px;
+  left: 0px;
   list-style: none;
-  width: 250px;
+  position: relative;
+  z-index: 2;
+}
+
+.hideSubmenu {
+  display: none;
+}
+.showSubmenu {
+  display: block;
 }
 
 .main-menu:hover,
