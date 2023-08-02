@@ -6,8 +6,7 @@ import { registerWithGoogle, createUser } from '../lib/firebase.js';
 
 function showError(divInput, divError, errorMessage) {
   divInput.style.border = '1px solid red';
-  divError.innerHTML = `<img class="icon-error" src="./assets/icons/icon-error.svg">
-  <p class="error">${errorMessage}</p>`;
+  divError.innerHTML = `<img class="icon-error" src="./assets/icons/icon-error.svg"><p class="error">${errorMessage}</p>`;
 }
 function hideError(divInput, divError) {
   divInput.style.border = '1px solid hs1(246, 25% 77%)';
@@ -177,12 +176,11 @@ export const Register = (onNavigate) => {
 
   registerFormId.addEventListener('submit', (e) => {
     e.preventDefault();
-    const userName = registerFormId.userName.value;
-    const userEmail = registerFormId.userEmail.value;
-    const userPassword = registerFormId.userPassword.value;
-    const userConfirmPassword = registerFormId.confirmPassword.value;
-    /*const userRegister = {};
-    localStorage.removeItem('userRegister');*/
+    const userName = inputName.value;
+    const userEmail = inputEmail.value;
+    const userPassword = inputPassword.value;
+    const userConfirmPassword = inputConfirmPassword.value;
+
     // Validate user inputs for data entry fields
     const isNameEmpty = validateEmpty(
       userName,
