@@ -12,13 +12,17 @@ export const MyPostEdit = (
   const numberLikes = numberOfLikes === 0 ? '' : numberOfLikes;
 
   const post = `<div class="containerPost">
-      <div class="containerUser">
-        <img class="userBlack"src="${photoUrl}" alt="user Black"/>
-        <a class="names" >${name}</a>
-        <p>Esta es mi publicación</p>
-        <div>
-          <button id="btn-delete" class="btnDelete" data-id="${postId}">Eliminar</button>
-          <button id="btn-edit" class="btnEdit" data-id="${postId}">Editar</button>
+      <div class="containerUserEdit">
+        <div class="postEditNameAndImg">
+          <img class="userBlack"src="${photoUrl}" alt="user Black"/>
+          <p class="names" >${name}</p>
+        </div>
+        <div class="postEditButtons">
+          <img class="postEditIconMore" data-id="${postId}" src="./assets/icons/button-icon-more.svg" alt="button icon more">
+          <ul class="postEditIconMore__ul">
+              <li><button id="btn-delete" class="btnDelete" data-id="${postId}">Eliminar</button></li>
+              <li><button id="btn-edit" class="btnEdit" data-id="${postId}">Editar</button></li>
+          </ul>
         </div>
     </div>
       

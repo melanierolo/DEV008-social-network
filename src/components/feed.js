@@ -104,6 +104,15 @@ export const Feed = (onNavigate) => {
         allPostsHtml.appendChild(myPostsHtml);
       });
 
+      // --------------- Buttons of icon more ---------------
+      const iconsMore = feedDiv.querySelectorAll('.postEditIconMore');
+
+      iconsMore.forEach((iconMore) => {
+        iconMore.addEventListener('click', ({ target: { dataset } }) => {
+          console.log(dataset.id);
+        });
+      });
+
       // --------------- Delete Post ---------------
       const buttonsDelete = feedDiv.querySelectorAll('.btnDelete');
 
