@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable operator-linebreak */
-import { createUser } from '../lib/firebase.js';
+import { registerWithGoogle, createUser } from '../lib/firebase.js';
 
 // Validation functions
 
@@ -135,7 +135,7 @@ export const Register = (onNavigate) => {
 
   const registerButtons = `<div>
                             <p class="registerButtons__o marginBottom_8">o</p>
-                            <button class="btn btn--google marginBottom_16">
+                            <button id="loginGoogle" class="btn btn--google marginBottom_16">
                                 Continua con Google
                             </button>
                             <p class="register__Account">
@@ -181,7 +181,8 @@ export const Register = (onNavigate) => {
     const userEmail = registerFormId.userEmail.value;
     const userPassword = registerFormId.userPassword.value;
     const userConfirmPassword = registerFormId.confirmPassword.value;
-
+    /*const userRegister = {};
+    localStorage.removeItem('userRegister');*/
     // Validate user inputs for data entry fields
     const isNameEmpty = validateEmpty(
       userName,
@@ -236,6 +237,28 @@ export const Register = (onNavigate) => {
           }
         });
     }
+  });
+
+  // -------Register Google-------
+  const googleButton = registerDiv.querySelector('#loginGoogle');
+  googleButton.addEventListener('click', () => {
+    const userRegister = {};
+    localStorage.removeItem('userRegister');
+    registerWithGoogle()
+      .then((resolve) => {
+        const googleCredentials = resolve;
+        if (googleCredentials.operationType === 'signIn') {
+          userRegister.email = googleCredentials.user.email;
+          userRegister.id = googleCredentials.user.uid;
+          userRegister.photoUrl = googleCredentials.user.photoURL;
+          userRegister.name = googleCredentials.user.displayName;
+          localStorage.setItem('userRegister', JSON.stringify(userRegister));
+          onNavigate('/feed');
+        }
+      })
+      .catch((error) => {
+        throw new Error(error.message, error.code);
+      });
   });
 
   return registerDiv;
