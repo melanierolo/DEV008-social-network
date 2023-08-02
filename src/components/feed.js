@@ -108,8 +108,9 @@ export const Feed = (onNavigate) => {
       const iconsMore = feedDiv.querySelectorAll('.postEditIconMore');
 
       iconsMore.forEach((iconMore) => {
-        iconMore.addEventListener('click', ({ target: { dataset } }) => {
-          console.log(dataset.id);
+        iconMore.addEventListener('click', (event) => {
+          console.log(event.target);
+          console.log(event);
         });
       });
 

@@ -21,7 +21,6 @@ function validateEmpty(valueInput, divInput, divError, errorMessage) {
   } else {
     hideError(divInput, divError);
     result = false;
-   
   }
   return result;
 }
