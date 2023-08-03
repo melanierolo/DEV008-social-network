@@ -157,9 +157,7 @@ export const Feed = (onNavigate) => {
         );
         const buttonIconMore =
           postEditButtons.querySelector('.postEditIconMore');
-        buttonIconMore.addEventListener('click', (event) => {
-          console.log(submenu);
-          console.log(event.target);
+        buttonIconMore.addEventListener('click', () => {
           if (submenu.classList.contains('hideSubmenu')) {
             submenu.classList.remove('hideSubmenu');
             submenu.classList.add('showSubmenu');

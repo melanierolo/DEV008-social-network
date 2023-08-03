@@ -585,10 +585,9 @@ body {
   display: flex;
   border: 1px solid #00b4b8;
   border-radius: 25px;
-  width: 90%;
+  width: 100%;
   height: auto;
   padding: 10px;
-  width: 100%;
 }
 
 .containerInput {
@@ -726,8 +725,6 @@ body {
   position: relative;
 }
 
-
-
 .hideSubmenu {
   display: none;
 }
@@ -791,37 +788,39 @@ nav.main-menu.expanded {
 }
 
 /* ------------------- SubMenuIcons -------------------------------- */
-.postEditButtons__submenu{
+.postEditButtons__submenu {
   box-shadow: 0 0 5px 1px lightgrey;
-    top: 35px;
-    left: -35px;
-    padding: 10px;
-    position: absolute;
-    z-index: 4;
+  top: 35px;
+  left: -35px;
+  padding: 10px;
+  position: absolute;
+  z-index: 4;
 }
 
-.postEditButtons__li{
+.postEditButtons__li {
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
 }
 
-.postEditButtons__li:hover{
-  background-color: #EBEDF0;
+.postEditButtons__li:hover {
+  background-color: #ebedf0;
   cursor: pointer;
 }
-.postEditIconMore{
+.postEditIconMore {
   display: flex;
   margin-top: 0px;
   padding: 0px;
   cursor: pointer;
 }
-.pencil, .trash{
+.pencil,
+.trash {
   width: 30px;
 }
-.btnDelete, .btnEdit{
- background-color: transparent;
+.btnDelete,
+.btnEdit {
+  background-color: transparent;
   border: none;
   cursor: pointer;
 }

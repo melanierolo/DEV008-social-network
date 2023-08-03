@@ -7,7 +7,6 @@ export function Header(onNavigate, data) {
     data.photoUrl === './assets/icons/Account-circle.svg'
       ? './assets/icons/account-icon.svg'
       : data.photoUrl;
-  console.log('profileImg', profileImg);
   const menuImg =
     data.photoUrl === './assets/icons/Account-circle.svg'
       ? './assets/icons/userIcon.png'
