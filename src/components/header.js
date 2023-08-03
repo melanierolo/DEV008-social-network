@@ -1,14 +1,26 @@
+/* eslint-disable operator-linebreak */
 import { signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase.js';
 
-export function Header(onNavigate) {
+export function Header(onNavigate, data) {
+  const profileImg =
+    data.photoUrl === './assets/icons/Account-circle.svg'
+      ? './assets/icons/account-icon.svg'
+      : data.photoUrl;
+  console.log('profileImg', profileImg);
+  const menuImg =
+    data.photoUrl === './assets/icons/Account-circle.svg'
+      ? './assets/icons/userIcon.png'
+      : data.photoUrl;
+  const username = typeof data.name === 'string' ? data.name : 'Hola, usuario';
+
   // Template String
   const logoHeader = `
                       <img class="logoHeader__img" src="./assets/images/catsSociety--logo.png" alt="logo"/>`;
   const menuProfile = `<ul class="menuProfile">
-                        <li class="menuItemProfile"><img class="menuProfile__img"src="./assets/icons/userIcon.png" alt="userIcon" /></li>
-                        <li class="menuItemProfile"><a id="userName">Nombre de usuario</a></li>
-                        <li class="menuItemProfile"><a id="userNickName">@username</a></li>
+                        <li class="menuItemProfile"><img class="menuProfile__img"src=${menuImg} alt="userIcon" /></li>
+                        <li class="menuItemProfile">${username}</li>
+                        <li class="menuItemProfile">@username</li>
                         <hr class="menu__line" />
                         <li class="menuItemProfile">
                           <a id="myPosts"><img class="menuIconProfile"src="./assets/icons/userIcon.png" alt="userIcon" />Mis publicaciones</a>
@@ -23,7 +35,7 @@ export function Header(onNavigate) {
                         <li class="menuItemProfile"><a id="logOut">Cerrar Sesión</a></li>
                       </ul>
                       <button class="hamburger">
-                        <img class="profileIcon" src="./assets/icons/account-icon.svg"/>
+                        <img class="profileIcon" src=${profileImg} />
                         <img class="closeIcon" src="./assets/icons/close-icon.png"/>
                       </button>`;
   const menuTopics = `<ul class="menuTopics">
@@ -57,13 +69,13 @@ export function Header(onNavigate) {
   headerHtml.classList.add('header');
   headerHtml.innerHTML = headerTemplate;
 
-  const myPosts = headerHtml.querySelector('#myPosts');
+  // const myPosts = headerHtml.querySelector('#myPosts');
   const feeds = headerHtml.querySelector('#feeds');
   const logOut = headerHtml.querySelector('#logOut');
 
-  myPosts.addEventListener('click', () => {
+  /* myPosts.addEventListener('click', () => {
     onNavigate('/myPosts');
-  });
+  }); */
 
   feeds.addEventListener('click', () => {
     onNavigate('/feed');
