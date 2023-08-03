@@ -702,6 +702,7 @@ body {
 .postEditNameAndImg {
   display: flex;
   align-items: center;
+  width: 60%;
 }
 
 .containerUserEdit {
@@ -714,18 +715,7 @@ body {
   position: relative;
 }
 
-.postEditIconMore {
-  cursor: pointer;
-}
 
-.postEditButtons__submenu {
-  position: relative;
-  top: 20px;
-  left: 0px;
-  list-style: none;
-  position: relative;
-  z-index: 2;
-}
 
 .hideSubmenu {
   display: none;
@@ -787,4 +777,40 @@ nav.main-menu.expanded {
     grid-template-columns: 250px auto;
     grid-gap: 10px;
   }
+}
+
+/* ------------------- SubMenuIcons -------------------------------- */
+.postEditButtons__submenu{
+  box-shadow: 0 0 5px 1px lightgrey;
+    top: 35px;
+    left: -35px;
+    padding: 10px;
+    position: absolute;
+    z-index: 4;
+}
+
+.postEditButtons__li{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.postEditButtons__li:hover{
+  background-color: #EBEDF0;
+  cursor: pointer;
+}
+.postEditIconMore{
+  display: flex;
+  margin-top: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+.pencil, .trash{
+  width: 30px;
+}
+.btnDelete, .btnEdit{
+ background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
