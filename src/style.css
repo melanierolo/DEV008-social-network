@@ -758,9 +758,9 @@ nav.main-menu.expanded {
   }
   .sidebarTopics {
     position: fixed;
-    width: 200px;
+    width: 230px;
     height: auto;
-    margin: 0 25px;
+    margin: 0 10px;
   }
 
   .sidebarItemTopics a {
