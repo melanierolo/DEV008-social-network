@@ -29,13 +29,14 @@ Esta red social se encarga de solucionar la falta de un espacio especializado pa
 
 En el prototipo de baja fidelidad usamos la herramienta moqups.
 
-[Enlace]()
+[PDF - prototipo de baja fidelidad](https://drive.google.com/file/d/1edKQvxJwCs4nUjnde0kV-7jCd54drZOH/view?usp=drive_link)
 
-## Prototipo de alta fidelidad
+### Prototipo de alta fidelidad
 
 En el prototipo de alta fidelidad usamos la herramienta figma, donde implementamos conceptos de atomic design para agrupar los elementos de nuestra página y usamos la herramiento de componente de Figma.Además, elegimos los colores,la tipografía, las imágenes y comenzamos a prototipar con la idea que ya habíamos plasmado en moqups.
 
-[Enlace]()
+[PDF - prototipo de alta fidelidad - mobile](https://drive.google.com/file/d/1TFfZLgib_DLwdmuGbQADnvOej_U5ozhO/view?usp=drive_link)
+[PDF - prototipo de alta fidelidad - desktop](https://drive.google.com/file/d/1wUs3TR4VY0J6XdO2g-U8iq5ADxWLrBJ8/view?usp=drive_link)
 
 ## 5. Testeos de usabilidad
 
@@ -48,7 +49,7 @@ Las pruebas con usuarios nos permiten validar o refutar las hipótesis que tenem
 
 Una de las modificaciones más importantes con un 42% fue el “like” se modificó el color para que fuera más fácil de identificar cuando se ha realizado la acción y se emplearon las sugerencias de la pregunta abierta.
 
-[Enlace]()
+[Enlace](https://drive.google.com/file/d/19yQ677pYeGOZQu5vGju3YgSbuhAZ7oBJ/view?usp=drive_link)
 
 ## 6. Objetivos de aprendizaje
 
