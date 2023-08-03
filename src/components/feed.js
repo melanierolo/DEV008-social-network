@@ -47,10 +47,10 @@ export const Feed = (onNavigate) => {
   feedContentDiv.classList.add('feedContent');
   const publishPostAndPostDiv = document.createElement('div');
   publishPostAndPostDiv.classList.add('publishPostAndPostContainer');
+  const userData = JSON.parse(localStorage.getItem('userRegister'));
 
   // Childs
-  const headerHtml = Header(onNavigate);
-  const publishPostHtml = PublishPost();
+  const headerHtml = Header(onNavigate, userData);
   const modalPostEdit = ModalPostEdit();
   const modalPostDelete = ModalDelete();
   const sidebarHtml = Sidebar();
@@ -63,7 +63,16 @@ export const Feed = (onNavigate) => {
   feedContentDiv.appendChild(sidebarHtml);
   feedContentDiv.appendChild(publishPostAndPostDiv);
 
+  /* ------------------------ Post Publishing Section ------------------------------ */
+  const userImg = JSON.parse(localStorage.getItem('userRegister')).photoUrl;
+  const publishPostImg =
+    userImg === './assets/icons/Account-circle.svg'
+      ? './assets/icons/Account-circle.svg'
+      : userImg;
+  const publishPostHtml = PublishPost(publishPostImg);
   publishPostAndPostDiv.appendChild(publishPostHtml);
+
+  /* button publishPost */
 
   const buttonPublish = publishPostHtml.querySelector('#buttonPublish');
   const inputTextPublish = publishPostHtml.querySelector('#inputTextPublish');
@@ -95,6 +104,8 @@ export const Feed = (onNavigate) => {
         });
     }
   });
+
+  /* ------------------------ Posts ------------------------------ */
 
   const allPostsHtml = document.createElement('div');
   allPostsHtml.classList.add('postsContainer');
