@@ -21,6 +21,7 @@ Esta red social se encarga de solucionar la falta de un espacio especializado pa
 
 ## 3. Historias de Usuario
 
+![Historia de usuario 1](./src/assets/prototype/historia-de-usuario-1.png)
 [Link con todas las historias de usuario]()
 
 ## 4. Prototipos
