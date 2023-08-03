@@ -22,7 +22,7 @@ Esta red social se encarga de solucionar la falta de un espacio especializado pa
 ## 3. Historias de Usuario
 
 ![Historia de usuario 1](./src/assets/prototype/historia-de-usuario-1.png)
-[Link con todas las historias de usuario]()
+[Link con todas las historias de usuario](https://drive.google.com/file/d/1ChlO8tIFM0VpyVdOkAGLzKVNZvChjSHQ/view?usp=drive_link)
 
 ## 4. Prototipos
 
@@ -39,7 +39,7 @@ En el prototipo de alta fidelidad usamos la herramienta figma, donde implementam
 
 ![Prototipo de alta fidelidad - componentes](./src/assets/prototype/figma-componentes.png)
 ![Prototipo de alta fidelidad - login](./src/assets/prototype/Prototipo-de-alta-fi_desktop.png)
-![Prototipo de alta fidelidad - mobile](./src/assets/prototype/Prototipo-de-alta-fi_desktop.png)
+![Prototipo de alta fidelidad - mobile](./src/assets/prototype/Prototipo-de-alta-fi_mobile.png)
 
 - [PDF - prototipo de alta fidelidad - mobile](https://drive.google.com/file/d/1TFfZLgib_DLwdmuGbQADnvOej_U5ozhO/view?usp=drive_link)
 - [PDF - prototipo de alta fidelidad - desktop](https://drive.google.com/file/d/1wUs3TR4VY0J6XdO2g-U8iq5ADxWLrBJ8/view?usp=drive_link)
