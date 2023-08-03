@@ -240,6 +240,7 @@ body {
   height: 60px;
   position: sticky;
   top: 0px;
+  z-index: 10;
 }
 
 .header__logoHeader {
@@ -545,14 +546,7 @@ body {
   height: 35px;
   margin: 40px 10px px 60px;
 }
-.text {
-  display: flex;
-  border: 1px solid #00b4b8;
-  border-radius: 25px;
-  width: 90%;
-  height: auto;
-  padding: 5px;
-}
+
 .photo-publish {
   display: flex;
   align-items: center;
@@ -562,6 +556,7 @@ body {
   width: 30px;
   height: 34px;
   margin-top: 15px;
+  margin-right: 10px;
 }
 
 .btnPublicar {
@@ -582,6 +577,22 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  width: 100%;
+  gap: 10px;
+}
+
+.inputText {
+  display: flex;
+  border: 1px solid #00b4b8;
+  border-radius: 25px;
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  width: 100%;
+}
+
+.containerInput {
+  width: 100%;
 }
 
 .addPhoto,
@@ -743,9 +754,9 @@ nav.main-menu.expanded {
   }
   .sidebarTopics {
     position: fixed;
-    width: 200px;
+    width: 230px;
     height: auto;
-    margin: 0 25px;
+    margin: 0 10px;
   }
 
   .sidebarItemTopics a {

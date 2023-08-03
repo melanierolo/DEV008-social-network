@@ -123,7 +123,7 @@ export const Login = (onNavigate) => {
           if (userCredentials.operationType === 'signIn') {
             userRegister.email = userCredentials.user.email;
             userRegister.id = userCredentials.user.uid;
-            userRegister.photoUrl = './assets/icons/Account circle.svg';
+            userRegister.photoUrl = './assets/icons/Account-circle.svg';
             localStorage.setItem('userRegister', JSON.stringify(userRegister));
             onNavigate('/feed');
           }

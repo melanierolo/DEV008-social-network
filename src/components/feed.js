@@ -16,7 +16,29 @@ import { MyPostEdit } from './myPostEdit.js';
 import { ModalPostEdit } from './modalPostEdit.js';
 import { ModalDelete } from './modalDelete.js';
 import { Sidebar } from './sidebar.js';
+/* validation functions */
 
+function showError(divInput, divError, errorMessage) {
+  divInput.style.border = '1px solid red';
+  divError.innerHTML = `<img class="icon-error" src="./assets/icons/icon-error.svg">
+  <p class="error">${errorMessage}</p>`;
+}
+function hideError(divInput, divError) {
+  divInput.style.border = '1px solid hs1(246, 25% 77%)';
+  divInput.style.border = '1px solid #00b4b8';
+  divError.innerHTML = '';
+}
+function validateEmpty(valueInput, divInput, divError, errorMessage) {
+  let result;
+  if (valueInput.length === 0) {
+    showError(divInput, divError, errorMessage);
+    result = true;
+  } else {
+    hideError(divInput, divError);
+    result = false;
+  }
+  return result;
+}
 export const Feed = (onNavigate) => {
   // Parent
   const feedDiv = document.createElement('div');
@@ -25,10 +47,10 @@ export const Feed = (onNavigate) => {
   feedContentDiv.classList.add('feedContent');
   const publishPostAndPostDiv = document.createElement('div');
   publishPostAndPostDiv.classList.add('publishPostAndPostContainer');
+  const userData = JSON.parse(localStorage.getItem('userRegister'));
 
   // Childs
-  const headerHtml = Header(onNavigate);
-  const publishPostHtml = PublishPost();
+  const headerHtml = Header(onNavigate, userData);
   const modalPostEdit = ModalPostEdit();
   const modalPostDelete = ModalDelete();
   const sidebarHtml = Sidebar();
@@ -41,10 +63,22 @@ export const Feed = (onNavigate) => {
   feedContentDiv.appendChild(sidebarHtml);
   feedContentDiv.appendChild(publishPostAndPostDiv);
 
+  /* ------------------------ Post Publishing Section ------------------------------ */
+  const userImg = JSON.parse(localStorage.getItem('userRegister')).photoUrl;
+  const publishPostImg =
+    userImg === './assets/icons/Account-circle.svg'
+      ? './assets/icons/Account-circle.svg'
+      : userImg;
+  const publishPostHtml = PublishPost(publishPostImg);
   publishPostAndPostDiv.appendChild(publishPostHtml);
+
+  /* button publishPost */
 
   const buttonPublish = publishPostHtml.querySelector('#buttonPublish');
   const inputTextPublish = publishPostHtml.querySelector('#inputTextPublish');
+  const inputTextPublishError = publishPostHtml.querySelector(
+    '#inputTextPublishError'
+  );
 
   buttonPublish.addEventListener('click', () => {
     const getUserRegister = JSON.parse(localStorage.getItem('userRegister'));
@@ -53,15 +87,25 @@ export const Feed = (onNavigate) => {
     const textPublish = inputTextPublish.value;
     const userId = JSON.parse(localStorage.getItem('userRegister')).id;
 
-    addPost(img, userName, textPublish, userId)
-      .then(() => {
-        inputTextPublish.value = '';
-        onNavigate('/feed');
-      })
-      .catch((error) => {
-        throw new Error(error.message, 'error');
-      });
+    const isPublishEmpty = validateEmpty(
+      textPublish,
+      inputTextPublish,
+      inputTextPublishError,
+      'No se puede publicar el campo vacío.'
+    );
+    if (!isPublishEmpty === true) {
+      addPost(img, userName, textPublish, userId)
+        .then(() => {
+          inputTextPublish.value = '';
+          onNavigate('/feed');
+        })
+        .catch((error) => {
+          throw new Error(error.message, 'error');
+        });
+    }
   });
+
+  /* ------------------------ Posts ------------------------------ */
 
   const allPostsHtml = document.createElement('div');
   allPostsHtml.classList.add('postsContainer');
