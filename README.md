@@ -28,12 +28,17 @@ Esta red social se encarga de solucionar la falta de un espacio especializado pa
 ### Prototipo de baja fidelidad
 
 En el prototipo de baja fidelidad usamos la herramienta moqups.
+![Prototipo de baja fidelidad](./src/assets/prototype/Prototipo-baja_login-desktop.png)
 
 [PDF - prototipo de baja fidelidad](https://drive.google.com/file/d/1edKQvxJwCs4nUjnde0kV-7jCd54drZOH/view?usp=drive_link)
 
 ### Prototipo de alta fidelidad
 
 En el prototipo de alta fidelidad usamos la herramienta figma, donde implementamos conceptos de atomic design para agrupar los elementos de nuestra página y usamos la herramiento de componente de Figma.Además, elegimos los colores,la tipografía, las imágenes y comenzamos a prototipar con la idea que ya habíamos plasmado en moqups.
+
+![Prototipo de alta fidelidad - componentes](./src/assets/prototype/figma-componentes.png)
+![Prototipo de alta fidelidad - login](./src/assets/prototype/Prototipo-de-alta-fi_desktop.png)
+![Prototipo de alta fidelidad - mobile](./src/assets/prototype/Prototipo-de-alta-fi_desktop.png)
 
 [PDF - prototipo de alta fidelidad - mobile](https://drive.google.com/file/d/1TFfZLgib_DLwdmuGbQADnvOej_U5ozhO/view?usp=drive_link)
 [PDF - prototipo de alta fidelidad - desktop](https://drive.google.com/file/d/1wUs3TR4VY0J6XdO2g-U8iq5ADxWLrBJ8/view?usp=drive_link)
