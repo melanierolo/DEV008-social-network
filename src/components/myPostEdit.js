@@ -18,10 +18,19 @@ export const MyPostEdit = (
           <p class="names" >${name}</p>
         </div>
         <div class="postEditButtons">
+           
+            
           <img class="postEditIconMore" data-id="${postId}" src="./assets/icons/button-icon-more.svg" alt="button icon more">
-          <ul class="postEditIconMore__ul">
-              <li><button id="btn-delete" class="btnDelete" data-id="${postId}">Eliminar</button></li>
-              <li><button id="btn-edit" class="btnEdit" data-id="${postId}">Editar</button></li>
+          <ul class="postEditButtons__submenu hideSubmenu">
+            <li class="postEditButtons__li">
+              <img class="trash" src="./assets/icons/Delete.png" alt="IConDelete">
+              <button id="btn-delete" class="btnDelete" data-id="${postId}">Eliminar</button>
+            </li>
+            <li class="postEditButtons__li">
+              <img class="pencil" src="./assets/icons/Edit.png" alt="IconEdit">
+              <button id="btn-edit" class="btnEdit" data-id="${postId}">Editar</button>
+            </li>
+           
           </ul>
         </div>
     </div>
