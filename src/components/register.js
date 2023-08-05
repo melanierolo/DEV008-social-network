@@ -1,6 +1,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable operator-linebreak */
 import { registerWithGoogle, createUser } from '../lib/firebase.js';
+import iconLogo from '../assets/images/catsSociety--logo.png';
 
 // Validation functions
 
@@ -79,7 +80,7 @@ function matchPasswordFields(
 
 export const Register = (onNavigate) => {
   const registerLogo = `<div class="registerLogo">
-                          <img class="registerLogo__img" src="./assets/images/catsSociety--logo.png" alt="logo CatsSociety" />
+                          <img class="registerLogo__img" src=${iconLogo} alt="logo CatsSociety" />
                           <p class="registerLogo__title">CatsSociety</p>
                         </div>`;
 

@@ -16,11 +16,13 @@ import { MyPostEdit } from './myPostEdit.js';
 import { ModalPostEdit } from './modalPostEdit.js';
 import { ModalDelete } from './modalDelete.js';
 import { Sidebar } from './sidebar.js';
-/* validation functions */
+import iconError from '../assets/icons/icon-error.svg';
+import iconAccountCircle from '../assets/icons/Account-circle.svg';
 
+/* validation functions */
 function showError(divInput, divError, errorMessage) {
   divInput.style.border = '1px solid red';
-  divError.innerHTML = `<img class="icon-error" src="./assets/icons/icon-error.svg">
+  divError.innerHTML = `<img class="icon-error" src=${iconError}>
   <p class="error">${errorMessage}</p>`;
 }
 function hideError(divInput, divError) {
@@ -66,9 +68,7 @@ export const Feed = (onNavigate) => {
   /* ------------------------ Post Publishing Section ------------------------------ */
   const userImg = JSON.parse(localStorage.getItem('userRegister')).photoUrl;
   const publishPostImg =
-    userImg === './assets/icons/Account-circle.svg'
-      ? './assets/icons/Account-circle.svg'
-      : userImg;
+    userImg === `${iconAccountCircle}` ? `${iconAccountCircle}` : userImg;
   const publishPostHtml = PublishPost(publishPostImg);
   publishPostAndPostDiv.appendChild(publishPostHtml);
 

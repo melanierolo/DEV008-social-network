@@ -1,5 +1,8 @@
+import iconShare from '../assets/icons/shares.png';
+import iconCatLike from '../assets/icons/CatHead.png';
+
 /* eslint-disable comma-dangle */
-export const MyPosts = (
+export const MyPosts = async (
   name,
   textPost,
   photoUrl,
@@ -10,6 +13,7 @@ export const MyPosts = (
   const myPostsDiv = document.createElement('div');
   const isLiked = isUserIdInArray === true ? 'colorLikeCat' : '';
   const numberLikes = numberOfLikes === 0 ? '' : numberOfLikes;
+
   const post = `<div class="containerPost">
       <div class="containerUser">
         <img class="userBlack"src="${photoUrl}" alt="user Black"/>
@@ -22,16 +26,17 @@ export const MyPosts = (
       
       <div class="containerIcons">
         <div data-id="${postId}" class="containerLike">
-          <img data-id="${postId}" class="likeCat ${isLiked}" src="./assets/icons/CatHead.png"/>
+          <img data-id="${postId}" class="likeCat ${isLiked}" src=${iconCatLike}>
           <p data-id="${postId}" class="like">Me gusta ${numberLikes} </p>
         </div>
         
         <div class="sharePost">
-          <img class="share" src="./assets/icons/shares.png"/>
+          <img class="share" src=${iconShare}>
           <p class="shareText">Compartir</p>
         </div>
       </div>
   </div>`;
+
   myPostsDiv.innerHTML = post;
   return myPostsDiv;
 };

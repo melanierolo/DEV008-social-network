@@ -1,3 +1,9 @@
+import iconDelete from '../assets/icons/Delete.png';
+import iconEdit from '../assets/icons/Edit.png';
+import iconCatHead from '../assets/icons/CatHead.png';
+import iconMore from '../assets/icons/button-icon-more.svg';
+import iconShare from '../assets/icons/shares.png';
+
 /* eslint-disable comma-dangle */
 export const MyPostEdit = (
   name,
@@ -18,19 +24,16 @@ export const MyPostEdit = (
           <p class="names" >${name}</p>
         </div>
         <div class="postEditButtons">
-           
-            
-          <img class="postEditIconMore" data-id="${postId}" src="./assets/icons/button-icon-more.svg" alt="button icon more">
+          <img class="postEditIconMore" data-id="${postId}" src=${iconMore} alt="button icon more">
           <ul class="postEditButtons__submenu hideSubmenu">
             <li class="postEditButtons__li">
-              <img class="trash" src="./assets/icons/Delete.png" alt="IConDelete">
+              <img class="trash" src=${iconDelete} alt="IConDelete">
               <button id="btn-delete" class="btnDelete" data-id="${postId}">Eliminar</button>
             </li>
             <li class="postEditButtons__li">
-              <img class="pencil" src="./assets/icons/Edit.png" alt="IconEdit">
+              <img class="pencil" src=${iconEdit} alt="IconEdit">
               <button id="btn-edit" class="btnEdit" data-id="${postId}">Editar</button>
             </li>
-           
           </ul>
         </div>
     </div>
@@ -41,12 +44,12 @@ export const MyPostEdit = (
       
       <div class="containerIcons">
         <div class="containerLike" data-id="${postId}">
-          <img  data-id="${postId}"class="likeCat ${isLiked}" src="./assets/icons/CatHead.png"/>
-          <p  data-id="${postId}"class="like">Me gusta ${numberLikes}</p>
+          <img  data-id="${postId}" class="likeCat ${isLiked}" src=${iconCatHead}>
+          <p  data-id="${postId}" class="like">Me gusta ${numberLikes}</p>
         </div>
         
         <div class="sharePost">
-          <img class="share" src="./assets/icons/shares.png"/>
+          <img class="share" src=${iconShare}>
           <p class="shareText">Compartir</p>
         </div>
       </div>
