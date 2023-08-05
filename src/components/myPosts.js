@@ -2,7 +2,7 @@ import iconShare from '../assets/icons/shares.png';
 import iconCatLike from '../assets/icons/CatHead.png';
 
 /* eslint-disable comma-dangle */
-export const MyPosts = async (
+export const MyPosts = (
   name,
   textPost,
   photoUrl,
