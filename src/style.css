@@ -1,0 +1,826 @@
+@font-face {
+  font-family: Sora;
+  src: url(./assets/fonts/Sora-Bold.ttf), url(./assets/fonts/Sora-ExtraBold.ttf),
+    url(./assets/fonts/Sora-ExtraLight.ttf), url(./assets/fonts/Sora-Light.ttf),
+    url(./assets/fonts/Sora-Medium.ttf),
+    url(./assets/fonts/Sora-Regular.ttf) url(./assets/fonts/Sora-SemiBold.ttf),
+    url(./assets/fonts/Sora-Thin.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Sora, sans-serif;
+}
+
+/*-------------Page LOGIN-------------------*/
+.container {
+  display: flex;
+}
+.sectionRight {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ebffff;
+  height: 100vh;
+}
+
+.error-container {
+  position: relative;
+}
+
+.icon-error {
+  position: absolute;
+  right: 15px;
+  top: -35px;
+}
+
+.error {
+  font-size: 12px;
+  color: #ff7979;
+  text-align: center;
+}
+/*-------------Page REGISTER-------------------*/
+
+.container__r {
+  display: flex;
+}
+
+.sectionRightRegister {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ebffff;
+  height: 100vh;
+}
+
+.login,
+.register {
+  width: 250px;
+  height: auto;
+  border-radius: 25px;
+  background: #fff;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+  padding: 16px 10px;
+}
+
+.loginLogo,
+.registerLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 120px;
+  justify-content: center;
+}
+
+.loginLogo__img,
+.registerLogo__img {
+  width: 54.521px;
+  height: 50px;
+}
+
+.loginLogo__title,
+.registerLogo__title {
+  color: #000;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.loginForm,
+.registerForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm__label,
+.registerForm__label {
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.loginForm__input,
+.registerForm__input {
+  height: 36px;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 25px;
+  border: 1px solid #00b4b8;
+  padding: 4px 10px;
+}
+
+.loginForm__link,
+.register__link,
+.registerForm__link--blue {
+  cursor: pointer;
+}
+
+.loginForm__link--black,
+.register__link--black {
+  color: #000;
+  text-decoration-line: underline;
+}
+
+.loginForm__link--blue,
+.registerForm__link--blue {
+  color: #1464f6;
+}
+
+.loginButtons {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.loginButtons__o,
+.registerButtons__o {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__Account {
+  text-align: center;
+}
+
+/*buttons css*/
+.btn {
+  padding: 10px 5px;
+  font-size: small;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+.btn--primary {
+  border-radius: 25px;
+  background: #8c4eca;
+  color: white;
+}
+
+.btn--primary:hover {
+  background: #7642ab;
+}
+
+.btn--google {
+  width: 100%;
+  border-radius: 5px;
+  border: thin solid #888;
+  padding: 12px 20px;
+  box-shadow: 1px 1px 1px grey;
+  /*icon*/
+  background: url('./assets/icons/Google.png') transparent 15px 50% no-repeat;
+  background-size: 28px 24px;
+}
+
+.btn--google:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.marginBottom_4 {
+  margin-bottom: 4px;
+}
+
+.marginBottom_8 {
+  margin-bottom: 8px;
+}
+
+.marginBottom_16 {
+  margin-bottom: 16px;
+}
+
+@media screen and (min-width: 480px) {
+  /*Login*/
+  .sectionRight {
+    flex: 1;
+  }
+  .sectionLeft {
+    flex: 1;
+    /*login image*/
+    background: url('./assets/images/gatito_login.png') transparent 15px 50%
+      no-repeat;
+    background-color: #fff;
+    background-size: 492px 800px;
+    background-position: center;
+  }
+  /*Register*/
+  @media screen and (min-width: 480px) {
+    .container__r {
+      flex-direction: row-reverse;
+    }
+    .sectionRightRegister {
+      flex: 1;
+    }
+    .sectionLeftRegister {
+      flex: 1;
+      /*login image*/
+      background: url('./assets/images/gatito_registro.png') transparent 15px
+        50% no-repeat;
+      background-color: #fff;
+      background-size: 492px 600px;
+      background-position: center;
+    }
+  }
+}
+
+/*---------------Header-------------------*/
+.header {
+  background-color: #00b4b8;
+  padding: 0 4px;
+  height: 60px;
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+}
+
+.header__logoHeader {
+  position: fixed;
+  z-index: 100;
+  top: 5px;
+  right: calc(50% - 25px);
+}
+.logoHeader__img {
+  margin: 0 auto;
+  width: 50.938px;
+  height: 50px;
+}
+
+.menuProfile,
+.menuTopics {
+  position: fixed;
+  transform: translateX(-100%);
+  transition: transform 0.2s;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: white;
+  list-style: none;
+  padding-top: 2rem;
+}
+
+.menu__line {
+  border: 1px solid #e5e5e5;
+}
+
+.menuItemProfile,
+.menuItemTopics {
+  display: block;
+  margin: 2rem;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 auto;
+  /*text*/
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.menuItemProfile a,
+.menuItemTopics a {
+  display: flex;
+  align-items: center;
+}
+
+.menuItemProfile:hover,
+.menuItemTopics:hover {
+  color: #00b4b8;
+}
+
+.menuProfile__img {
+  width: 50px;
+  height: 50px;
+}
+
+/*menu-icons*/
+.menuIconProfile {
+  width: 30px;
+  height: 30px;
+  margin-right: 12px;
+}
+.menuIcon {
+  width: 29px;
+  height: 38px;
+  margin-right: 12px;
+}
+
+.hamburger {
+  position: fixed;
+  z-index: 100;
+  top: 2px;
+  right: 16px;
+  padding: 4px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hamburgerTopic {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 16px;
+  padding: 4px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.profileIcon {
+  width: 48px;
+  height: 48px;
+}
+
+.profileIconTopic {
+  width: 28px;
+  height: 28px;
+}
+
+.closeIcon,
+.closeIconTopic {
+  display: none;
+  position: relative;
+  top: 20px;
+}
+.showMenu,
+.showMenuTopic {
+  transform: translateY(0);
+}
+
+@media screen and (min-width: 480px) {
+  .header__menuTopics {
+    display: none;
+  }
+
+  .header__logoHeader {
+    left: 20px;
+  }
+  .header__logoHeader::after {
+    content: 'CatsSociety';
+    font-size: 32px;
+    font-weight: 600;
+    line-height: normal;
+    position: relative;
+    top: -10px;
+  }
+
+  .closeIcon {
+    height: 20px;
+    left: 25px;
+  }
+  .menuProfile {
+    width: 250px;
+    height: 320px;
+    z-index: 4;
+    top: 60px;
+    left: calc(100vw + 150px);
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+    background: #fff;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+  }
+  .showMenu {
+    transform: translate(-410px, 0px);
+  }
+  .menuItemProfile {
+    margin: 0.5rem;
+  }
+}
+
+/* ----------------------------MODAL ------------------------ */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(179, 179, 179, 0.8); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 80px auto auto;
+  gap: 16px;
+}
+.modal-header {
+  background-color: #00b4b8;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 20px 20px 0px 0px;
+}
+.modal-body {
+  padding: 0 18px;
+}
+.modal-body-input {
+  width: 100%;
+  height: 100px;
+  overflow-y: scroll;
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid #e5e5e5;
+}
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 18px 16px 18px;
+  border-radius: 0px 0px 20px 20px;
+}
+.modal-buttons-icon {
+  display: flex;
+}
+.modal-img {
+  width: 33.333px;
+  height: 30px;
+}
+
+/* The Close Button */
+.close {
+  color: #8e8a8a;
+  background-color: #e4dddd;
+  float: right;
+  font-size: 15px;
+  font-weight: bold;
+  width: 30px;
+  height: 29px;
+  border: 0 solid;
+
+  border-radius: 15px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-save {
+  width: 200px;
+}
+
+/* The Modal (Delete) */
+
+.modal-content-delete {
+  display: flex;
+  background-color: #fefefe;
+  border-radius: 20px;
+  flex-direction: column;
+  margin: 80px auto auto;
+  gap: 20px;
+  width: 570px;
+  padding: 18px 40px;
+}
+.modal-text-delete {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #726969;
+}
+.btn .btn--primary {
+  display: flex;
+  height: 44px;
+  padding: 14px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+}
+
+.close-delete {
+  display: flex;
+  height: 35.2px;
+  width: 200px;
+  padding: 14px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 25px;
+  border: 1px solid var(--dark-medium, #4f4f4f);
+  background: var(--white, #fff);
+  cursor: pointer;
+}
+
+/* -------------------------- Publish Post --------------- */
+.cointainerPublishPost {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(229, 229, 238, 0.33);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  height: auto;
+}
+.circleUser {
+  width: 35px;
+  height: 35px;
+  margin: 40px 10px px 60px;
+}
+
+.photo-publish {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.addPhoto {
+  width: 30px;
+  height: 34px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.btnPublicar {
+  display: flex;
+  width: 91px;
+  height: 21px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-top: 20px;
+  border-radius: 25px;
+  background: #8c4eca;
+  border: 0px solid;
+}
+
+.containerUserText {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 100%;
+  gap: 10px;
+}
+
+.inputText {
+  display: flex;
+  border: 1px solid #00b4b8;
+  border-radius: 25px;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+.containerInput {
+  width: 100%;
+}
+
+.addPhoto,
+.textAdd,
+.btnPublicar {
+  cursor: pointer;
+}
+
+.btnPublicar:hover {
+  background: #7642ab;
+}
+
+/* -------------------------- Post ----------------------- */
+.containerPost {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(229, 229, 238, 0.33);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  height: auto;
+}
+
+.containerUser {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.userBlack {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+.names {
+  width: 250px;
+}
+
+.feedPost {
+  margin: 30px;
+  margin-top: 50px;
+  overflow: auto;
+}
+
+.containerIcons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  border-top: solid 1px #e5e5e5;
+  padding-top: 16px;
+}
+
+.containerLike {
+  display: flex;
+}
+
+.containerLike-sharePost {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.like {
+  margin-left: 8px;
+}
+
+.likeCat {
+  width: 20px;
+  height: 20px;
+  flex-direction: column;
+}
+
+.likeCat:hover {
+  filter: invert(62%) sepia(87%) saturate(4344%) hue-rotate(161deg)
+    brightness(94%) contrast(101%);
+  cursor: pointer;
+}
+
+.colorLikeCat {
+  filter: invert(62%) sepia(87%) saturate(5000%) hue-rotate(161deg)
+    brightness(250%) contrast(300%);
+}
+
+.colorLikeCat:hover {
+  filter: invert(62%) sepia(87%) saturate(5000%) hue-rotate(161deg)
+    brightness(250%) contrast(300%);
+}
+
+.sharePost {
+  display: flex;
+  width: 91px;
+  height: 21px;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+}
+
+.shareText {
+  margin-left: 8px;
+}
+
+.share {
+  width: 20px;
+  height: 20px;
+}
+
+.share:hover {
+  filter: invert(62%) sepia(87%) saturate(4344%) hue-rotate(161deg)
+    brightness(94%) contrast(101%);
+  cursor: pointer;
+}
+
+/*post edit*/
+
+.postEditNameAndImg {
+  display: flex;
+  align-items: center;
+  width: 60%;
+}
+
+.containerUserEdit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.postEditButtons {
+  position: relative;
+}
+
+.hideSubmenu {
+  display: none;
+}
+.showSubmenu {
+  display: block;
+}
+
+.main-menu:hover,
+nav.main-menu.expanded {
+  width: 250px;
+  overflow: visible;
+}
+/* -------------------------- Sidebar ----------------------- */
+.containerSidebar {
+  display: none;
+}
+/* ------------------- Grid -------------------------------- */
+
+@media screen and (min-width: 480px) {
+  .containerSidebar {
+    display: block;
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  .sidebarTopics {
+    position: fixed;
+    width: 230px;
+    height: auto;
+    margin: 0 10px;
+  }
+
+  .sidebarItemTopics a {
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebarIcon {
+    width: 39px;
+    height: 48px;
+    margin-right: 12px;
+  }
+
+  .sidebarItemTopics {
+    display: block;
+    margin: 1rem;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 auto;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .feedContent {
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-gap: 10px;
+  }
+}
+
+/* ------------------- SubMenuIcons -------------------------------- */
+.postEditButtons__submenu {
+  box-shadow: 0 0 5px 1px lightgrey;
+  top: 35px;
+  left: -35px;
+  padding: 10px;
+  position: absolute;
+  z-index: 4;
+}
+
+.postEditButtons__li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.postEditButtons__li:hover {
+  background-color: #ebedf0;
+  cursor: pointer;
+}
+.postEditIconMore {
+  display: flex;
+  margin-top: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+.pencil,
+.trash {
+  width: 30px;
+}
+.btnDelete,
+.btnEdit {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
