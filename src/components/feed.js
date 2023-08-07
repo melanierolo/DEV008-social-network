@@ -17,6 +17,7 @@ import { ModalPostEdit } from './modalPostEdit.js';
 import { ModalDelete } from './modalDelete.js';
 import { Sidebar } from './sidebar.js';
 import iconError from '../assets/icons/icon-error.svg';
+import iconAccount from '../assets/icons/Account-circle.svg';
 
 /* validation functions */
 function showError(divInput, divError, errorMessage) {
@@ -67,9 +68,7 @@ export const Feed = (onNavigate) => {
   /* ------------------------ Post Publishing Section ------------------------------ */
   const userImg = JSON.parse(localStorage.getItem('userRegister')).photoUrl;
   const publishPostImg =
-    userImg === './assets/icons/Account-circle.svg'
-      ? './assets/icons/Account-circle.svg'
-      : userImg;
+    userImg === `${iconAccount}` ? `${iconAccount}` : userImg;
   const publishPostHtml = PublishPost(publishPostImg);
   publishPostAndPostDiv.appendChild(publishPostHtml);
 

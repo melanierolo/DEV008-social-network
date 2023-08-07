@@ -1,5 +1,7 @@
+/* eslint-disable operator-linebreak */
 import iconShare from '../assets/icons/shares.png';
 import iconCatLike from '../assets/icons/CatHead.png';
+import iconAccount from '../assets/icons/Account-circle.svg';
 
 /* eslint-disable comma-dangle */
 export const MyPosts = (
@@ -13,10 +15,14 @@ export const MyPosts = (
   const myPostsDiv = document.createElement('div');
   const isLiked = isUserIdInArray === true ? 'colorLikeCat' : '';
   const numberLikes = numberOfLikes === 0 ? '' : numberOfLikes;
+  const photo =
+    photoUrl === './assets/icons/Account-circle.svg'
+      ? `${iconAccount}`
+      : photoUrl;
 
   const post = `<div class="containerPost">
       <div class="containerUser">
-        <img class="userBlack"src="${photoUrl}" alt="user Black"/>
+        <img class="userBlack"src="${photo}" alt="user Black"/>
         <p class="names" >${name}</p>
       </div>
       
