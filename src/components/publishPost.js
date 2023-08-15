@@ -1,3 +1,5 @@
+import iconImg from '../assets/icons/img.png';
+
 /* eslint-disable operator-linebreak */
 export const PublishPost = (userImg) => {
   const divPublishPost = document.createElement('div');
@@ -11,7 +13,7 @@ export const PublishPost = (userImg) => {
                             </div>
                             </div>
                         <div class="photo-publish">
-                            <img class="addPhoto" src="./assets/icons/img.png" alt="add photo" />
+                            <img class="addPhoto" src=${iconImg} alt="add photo">
                             <label class="textAdd">Agregar imagen</label>
                             <input id="buttonPublish" class="btnPublicar" type="submit" value="Publicar">
                         </div>`;

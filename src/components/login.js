@@ -1,12 +1,14 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable operator-linebreak */
 import { loginWithGoogle, loginWithEmail } from '../lib/firebase';
+import iconError from '../assets/icons/icon-error.svg';
+import iconLogo from '../assets/images/catsSociety--logo.png';
 
 // Validation functions
 
 function showError(divInput, divError, errorMessage) {
   divInput.style.border = '1px solid red';
-  divError.innerHTML = `<img class="icon-error" src="./assets/icons/icon-error.svg">
+  divError.innerHTML = `<img class="icon-error" src=${iconError}>
   <p class="error">${errorMessage}</p>`;
 }
 function hideError(divInput, divError) {
@@ -45,7 +47,7 @@ function validateEmail(valueInput, divInput, divError, errorMessage) {
 export const Login = (onNavigate) => {
   // Template Strings
   const loginLogo = `<div class="loginLogo">
-                        <img class="loginLogo__img" src="./assets/images/catsSociety--logo.png" alt="logo CatsSociety" />
+                        <img class="loginLogo__img" src=${iconLogo} alt="logo CatsSociety" />
                         <h2 class="loginLogo__title">CatsSociety</h2>
                       </div>`;
 
